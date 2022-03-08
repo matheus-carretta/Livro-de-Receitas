@@ -1,9 +1,10 @@
 footer {
   align-items: center;
-  background-color: #E5E5E5;
-  bottom: 0px;
+  background-color: #e5e5e5;
+  bottom: 0;
   display: flex;
   justify-content: space-around;
+  padding: 5px;
   position: fixed;
   width: 100%;
 }
