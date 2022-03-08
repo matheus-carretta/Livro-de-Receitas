@@ -13,13 +13,13 @@ function Login() {
         />
       </label>
 
-      <label htmlFor="passsword-input">
+      <label htmlFor="password-input">
         Senha:
         <input
-          data-testid="passsword-input"
-          type="passsword"
-          id="passsword-input"
-          name="passsword-input"
+          data-testid="password-input"
+          type="password"
+          id="password-input"
+          name="password-input"
         />
       </label>
 
