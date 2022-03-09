@@ -1,4 +1,4 @@
-import foodsCategoriesAPI from '../../services/foodsCategoriesAPI';
+import { foodsCategoriesAPI } from '../../services/foodsCategoriesAPI';
 import { FETCH_FOODS } from '../../services/constants';
 
 // Actions Creators
