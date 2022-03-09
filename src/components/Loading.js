@@ -3,7 +3,7 @@ import '../styles/Loading.css';
 
 function Loading() {
   return (
-    <h1 id="loading">Carregando...</h1>
+    <h1 className="loading">Carregando...</h1>
   );
 }
 

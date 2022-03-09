@@ -64,7 +64,7 @@ function FoodsDetails() {
     }
 
     return (
-      <div id="drinks-carousel">
+      <div className="drinks-carousel">
         {recommendedDrinks.map(({ strDrinkThumb, strCategory, strDrink }, index) => (
           <div
             key={ index }
@@ -95,12 +95,12 @@ function FoodsDetails() {
     loading ? <Loading />
       : (
         <main>
-          <div id="img-container">
+          <div className="img-container">
             <img src={ strMealThumb } alt="meal tumb" data-testid="recipe-photo" />
           </div>
 
-          <div id="page-body">
-            <div id="title-container">
+          <div className="page-body">
+            <div className="title-container">
               <h2 data-testid="recipe-title">{strMeal}</h2>
               <button type="button" data-testid="share-btn">
                 <img src={ shareIcon } alt="share button" />
@@ -110,7 +110,7 @@ function FoodsDetails() {
               </button>
             </div>
 
-            <span id="category" data-testid="recipe-category">{strCategory}</span>
+            <span className="category" data-testid="recipe-category">{strCategory}</span>
 
             <section>
               <span>Ingredients</span>
@@ -148,7 +148,11 @@ function FoodsDetails() {
               { renderRecommendations() }
             </section>
 
-            <button id="startRecipeBtn" type="button" data-testid="start-recipe-btn">
+            <button
+              className="startRecipeBtn"
+              type="button"
+              data-testid="start-recipe-btn"
+            >
               Start Recipe
             </button>
           </div>

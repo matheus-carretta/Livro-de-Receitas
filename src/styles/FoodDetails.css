@@ -1,19 +1,19 @@
-#page-body {
+.page-body {
   padding: 2.5%;
 }
 
-#img-container {
+.img-container {
   height: 155px;
   width: 100%;
 }
 
-#img-container > img {
-  object-fit: cover;
+.img-container > img {
   height: 100%;
+  object-fit: cover;
   width: 100%;
 }
 
-#title-container {
+.title-container {
   align-items: center;
   display: flex;
   height: 2em;
@@ -21,18 +21,18 @@
   width: 100%;
 }
 
-#title-container > h2 {
+.title-container > h2 {
   flex-grow: 1;
   max-width: 266px;
 }
 
-#title-container > button {
-  border: none;
+.title-container > button {
   background: transparent;
+  border: none;
 }
 
-#category {
-  color: #a9a9a9;
+.category {
+  color: darkgray;
   font-size: 1em;
 }
 
@@ -44,56 +44,56 @@ section {
 }
 
 .text-container {
+  align-items: flex-start;
   background-color: #ececec;
   border-radius: 4px;
-  padding: 0.7em;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   margin: 0;
   margin-top: 0.2em;
   min-width: calc(342px - (2 * 0.7em));
+  padding: 0.7em;
 }
 
 .ingredientItem {
+  font-size: 1em;
+  list-style-type: '- ';
   margin: 0;
   margin-left: 0.5em;
-  font-size: 1em;
   text-align: center;
-  list-style-type: "- ";
 }
 
 span {
   font-size: 1.5em;
 }
 
-#drinks-carousel {
+.drinks-carousel {
   display: flex;
   flex-direction: row;
-  width: 100%;
   overflow-x: scroll;
   padding-bottom: 1em;
+  width: 100%;
 }
 
 .drinksCard {
-  margin: 0 0.2em;
+  border: solid darkgray 1px;
+  border-radius: 6px;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  border-radius: 6px;
-  border: solid #a9a9a9 1px;
-  padding-bottom: 0.1em;
+  margin: 0 0.2em;
   margin-bottom: 2em;
   object-fit: cover;
-  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  padding-bottom: 0.1em;
 }
 
 .drinksCard > img {
-  width: 10.1em;
   border-radius: 6px 6px 0 0;
+  width: 10.1em;
 }
 
 .drinkCategory {
-  color: #a9a9a9;
+  color: darkgray;
   font-size: 0.7em;
   padding: 0.2em;
   padding-left: 0.4em;
@@ -105,13 +105,13 @@ span {
   padding-left: 0.4em;
 }
 
-#startRecipeBtn {
+.startRecipeBtn {
   background-color: #6ce34f;
   border: none;
+  bottom: 0;
   font-size: 1.5em;
   height: 2em;
   margin-top: 1em;
-  width: 95%;
   position: fixed;
-  bottom: 0;
+  width: 95%;
 }

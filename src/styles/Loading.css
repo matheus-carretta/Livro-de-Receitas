@@ -1,4 +1,4 @@
-#loading {
+.loading {
   display: flex;
   justify-content: center;
   margin-top: calc(50vh - 1em);
