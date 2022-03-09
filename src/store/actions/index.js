@@ -1,5 +1,7 @@
-import { foodsCategoriesAPI, foodDetailsAPI, drinksAPI } from '../../services/APIs';
-import { FETCH_FOODS, FETCH_FOOD_DETAILS, FETCH_DRINKS } from '../../services/constants';
+import { foodsCategoriesAPI, foodDetailsAPI, drinksAPI, foodsAPI, drinkDetailsAPI,
+} from '../../services/APIs';
+import { FETCH_FOODS, FETCH_RECIPE_DETAILS, FETCH_RECOMMENDATIONS,
+} from '../../services/constants';
 
 // Actions Creators
 
@@ -8,13 +10,13 @@ export const getFoodsCategories = (payload) => ({
   payload,
 });
 
-export const getFoodDetails = (payload) => ({
-  type: FETCH_FOOD_DETAILS,
+export const getRecipeDetails = (payload) => ({
+  type: FETCH_RECIPE_DETAILS,
   payload,
 });
 
-export const getDrinks = (payload) => ({
-  type: FETCH_DRINKS,
+export const getRecommendation = (payload) => ({
+  type: FETCH_RECOMMENDATIONS,
   payload,
 });
 
@@ -31,22 +33,24 @@ export function getFoodsCategoriesThunk() {
   };
 }
 
-export function getFoodDetailsThunk(recipeId) {
+export function getRecipeDetailsThunk(recipeId, type) {
   return async (dispatch) => {
     try {
-      const response = await foodDetailsAPI(recipeId);
-      dispatch(getFoodDetails(response.meals[0]));
+      const recipeType = type === 'meals' ? foodDetailsAPI : drinkDetailsAPI;
+      const response = await recipeType(recipeId);
+      dispatch(getRecipeDetails(response[type][0]));
     } catch (error) {
       console.log(error);
     }
   };
 }
 
-export function getDrinksThunk() {
+export function getRecommendationThunk(type) {
   return async (dispatch) => {
     try {
-      const response = await drinksAPI();
-      dispatch(getDrinks(response.drinks));
+      const recipeType = type === 'meals' ? foodsAPI : drinksAPI;
+      const response = await recipeType();
+      dispatch(getRecommendation(response[type]));
     } catch (error) {
       console.log(error);
     }

@@ -29,6 +29,19 @@
 .title-container > button {
   background: transparent;
   border: none;
+  outline: none;
+}
+
+.copiedPopUp {
+  background-color: #ececec;
+  border-radius: 5px;
+  bottom: 3em;
+  height: 1em;
+  left: calc(50vw - 4em);
+  padding: 0.3em 1em;
+  position: fixed;
+  text-align: center;
+  width: 6em;
 }
 
 .category {
@@ -67,7 +80,7 @@ span {
   font-size: 1.5em;
 }
 
-.drinks-carousel {
+.drink-carousel, .meal-carousel {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
@@ -75,7 +88,7 @@ span {
   width: 100%;
 }
 
-.drinksCard {
+.drinkCard, .mealCard {
   border: solid darkgray 1px;
   border-radius: 6px;
   box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
@@ -87,7 +100,7 @@ span {
   padding-bottom: 0.1em;
 }
 
-.drinksCard > img {
+.drinkCard > img, .mealCard > img {
   border-radius: 6px 6px 0 0;
   width: 10.1em;
 }
@@ -99,7 +112,7 @@ span {
   padding-left: 0.4em;
 }
 
-.drinkName {
+.drinkName, .mealName {
   font-size: 0.8em;
   padding: 0.2em;
   padding-left: 0.4em;

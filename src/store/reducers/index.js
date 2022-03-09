@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import foodsCategories from './foodsCategories';
-import foodDetails from './foodDetails';
-import drinks from './drinks';
+import recipeDetails from './recipeDetails';
+import recommendations from './recommendations';
 
-const rootReducer = combineReducers({ foodsCategories, foodDetails, drinks });
+const rootReducer = combineReducers({ foodsCategories, recipeDetails, recommendations });
 
 export default rootReducer;
