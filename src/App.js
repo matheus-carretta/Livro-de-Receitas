@@ -16,6 +16,7 @@ import Foods from './pages/Foods';
 import FoodsDetails from './pages/FoodsDetails';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 import './styles/App.css';
 
 // Remover estas linhas após criar as rotas
@@ -34,8 +35,16 @@ export default function App() {
       <Route exact path="/explore" component={ Explore } />
       <Route exact path="/explore/foods" component={ ExploreFoods } />
       <Route exact path="/explore/drinks" component={ ExploreDrinks } />
-      <Route path="/explore/drinks/ingredients" component={ ExploreDrinksIngredients } />
-      <Route path="/explore/foods/ingredients" component={ ExploreFoodsIngredients } />
+      <Route
+        exact
+        path="/explore/drinks/ingredients"
+        component={ ExploreDrinksIngredients }
+      />
+      <Route
+        exact
+        path="/explore/foods/ingredients"
+        component={ ExploreFoodsIngredients }
+      />
       <Route
         path="/explore/foods/nationalities"
         component={ ExploreFoodsNationalities }
@@ -45,6 +54,7 @@ export default function App() {
       <Route path="/favorite-recipes" component={ Favorites } />
       <Route path="/foods/:id" component={ FoodsDetails } />
       <Route path="/drinks/:id" component={ FoodsDetails } />
+      <Route path="/explore/drinks/nationalities" component={ NotFound } />
     </Switch>
   );
 }
