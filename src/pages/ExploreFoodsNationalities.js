@@ -39,11 +39,12 @@ function ExploreFoodsNationalities() {
   };
 
   return (
-    <div>
+    <div id="main">
       <select
         data-testid="explore-by-nationality-dropdown"
         value={ nationality }
         onChange={ ({ target }) => setNationality(target.value) }
+        id="dropdown"
       >
         {selectOptions.map(({ strArea }, index) => (
           <option
