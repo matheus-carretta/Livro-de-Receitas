@@ -23,13 +23,13 @@ import './styles/App.css';
 console.log(CurrentDrinkRecipe);
 console.log(CurrentFoodRecipe);
 console.log(DrinksDetails);
-console.log(FoodsDetails);
 
 export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route path="/foods" component={ Foods } />
+      <Route exact path="/foods" component={ Foods } />
+      <Route path="/foods/:id" component={ FoodsDetails } />
       <Route path="/drinks" component={ Drinks } />
       <Route path="/explore" component={ Explore } />
       <Route path="/explore/foods" component={ ExploreFoods } />

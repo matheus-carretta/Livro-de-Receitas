@@ -8,7 +8,7 @@ function Foods() {
 
   useEffect(() => {
     dispatch(getFoodsCategoriesThunk());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
