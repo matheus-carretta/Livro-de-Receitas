@@ -39,12 +39,12 @@ function ExploreFoodsNationalities() {
   };
 
   return (
-    <div id="main">
+    <div className="main">
       <select
         data-testid="explore-by-nationality-dropdown"
         value={ nationality }
         onChange={ ({ target }) => setNationality(target.value) }
-        id="dropdown"
+        className="dropdown"
       >
         {selectOptions.map(({ strArea }, index) => (
           <option
@@ -56,12 +56,12 @@ function ExploreFoodsNationalities() {
           </option>
         ))}
       </select>
-      <div id="card-container">
+      <div className="card-container">
         {foodArray.map(({ idMeal, strMeal, strMealThumb }, index) => (
           <div
             key={ index }
             data-testid={ `${index}-recipe-card` }
-            id="card"
+            className="card"
             onClick={ () => redirectToFoodDetails(idMeal) }
             role="button"
             tabIndex={ 0 }

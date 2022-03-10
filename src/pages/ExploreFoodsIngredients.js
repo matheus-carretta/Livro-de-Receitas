@@ -23,13 +23,13 @@ function ExploreFoodsIngredients() {
   };
 
   return (
-    <div id="card-container">
+    <div className="card-container">
       {ingredients.map(
         ({ strIngredient }, index) => (
           <div
             key={ index }
             data-testid={ `${index}-ingredient-card` }
-            id="card"
+            className="card"
             onClick={ redirectToFoods }
             role="button"
             tabIndex={ 0 }
