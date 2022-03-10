@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function Drinks() {
   return (
-    <p>Elemento inicial</p>
+    <div>
+      <p>Página de bebidas</p>
+      <Footer />
+    </div>
   );
 }
 

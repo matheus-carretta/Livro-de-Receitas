@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function ExploreFoodsNationalities() {
   return (
-    <p>Elemento inicial</p>
+    <div>
+      <p>Explore Foods Nationalities</p>
+      <Footer />
+    </div>
   );
 }
 
