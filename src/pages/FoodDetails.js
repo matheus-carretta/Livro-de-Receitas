@@ -51,13 +51,11 @@ function FoodDetails() {
 
   const setFavorite = () => {
     addFavorite(foodDetails, 'Meal');
-    console.log('Favoritou');
     setIsFavorite(true);
   };
 
   const unsetFavorite = () => {
     removeFavorite(id);
-    console.log('Desfavoritou');
     setIsFavorite(false);
   };
 

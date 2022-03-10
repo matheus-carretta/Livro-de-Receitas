@@ -4,7 +4,6 @@ import { ZERO, MAX_RECOMENDATIONS, MIN_INGREDIENTS, MAX_INGREDIENTS } from './co
 export const URL = (strYoutube = '') => strYoutube.replace('watch?v=', 'v/');
 
 export const checkFavorite = (id) => {
-  console.log(id);
   const getFavoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   if (getFavoriteRecipes !== null) {
@@ -44,7 +43,6 @@ export const addFavorite = (recipeDetails, type) => {
 export const removeFavorite = (id) => {
   const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const favorites = getFavorites.filter((favorite) => favorite.id !== id);
-  console.log(favorites);
   localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
 };
 
