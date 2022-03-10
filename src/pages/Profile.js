@@ -1,10 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function Profile() {
   const getUserEmail = localStorage.getItem('user');
   const getUserEmailObj = JSON.parse(getUserEmail);
+
+  const history = useHistory();
 
   console.log(getUserEmailObj.email);
 
@@ -27,6 +30,7 @@ function Profile() {
       <button
         data-testid="profile-favorite-btn"
         type="button"
+        onClick={ () => history.push('/favorite-recipes') }
       >
         Favorite Recipes
       </button>
