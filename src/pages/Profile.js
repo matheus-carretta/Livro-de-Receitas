@@ -1,8 +1,12 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function Profile() {
   return (
-    <p>Elemento inicial</p>
+    <div>
+      <p>Tela de perfil</p>
+      <Footer />
+    </div>
   );
 }
 
