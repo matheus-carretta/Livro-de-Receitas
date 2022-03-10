@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import { fetchRandomFoodOrDrinks } from '../services/foodsCategoriesAPI';
 
 function ExploreFoods() {
@@ -26,6 +27,7 @@ function ExploreFoods() {
       >
         Surprise me!
       </button>
+      <Footer />
     </div>
   );
 }

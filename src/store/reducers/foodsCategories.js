@@ -1,8 +1,8 @@
 import { FETCH_FOODS } from '../../services/constants';
 
-const INITIAL_STATE = ['a'];
+const INITIAL_STATE = [];
 
-const foods = (state = INITIAL_STATE, actions) => {
+const foodsCategories = (state = INITIAL_STATE, actions) => {
   const { type, payload } = actions;
   switch (type) {
   case FETCH_FOODS:
@@ -15,4 +15,4 @@ const foods = (state = INITIAL_STATE, actions) => {
   }
 };
 
-export default foods;
+export default foodsCategories;

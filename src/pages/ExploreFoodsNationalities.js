@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Footer from '../components/Footer';
 import { fetchFoodsByNationality,
   fetchNationalities } from '../services/foodsCategoriesAPI';
 import { NUMBER_12 } from '../services/constants';
@@ -77,6 +78,7 @@ function ExploreFoodsNationalities() {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
