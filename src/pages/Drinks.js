@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function Drinks() {
   return (
-    <p>Elemento inicial</p>
+    <Header title="Drinks" isSearch type="cocktail" />
   );
 }
 

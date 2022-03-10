@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function Explore() {
   return (
-    <p>Elemento inicial</p>
+    <Header title="Explore" isSearch={ false } />
   );
 }
 

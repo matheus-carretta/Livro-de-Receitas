@@ -1,0 +1,78 @@
+
+
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.button-div {
+    padding-bottom: 3px ;
+    box-shadow: 1px 1px 2px rgba(40, 39, 39, 0.624);}
+
+.container-radio {
+    display: flex;
+    justify-content: space-evenly;
+}
+/* 
+.container-bar {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+} */
+
+.div-text {
+    margin-top: 5px;
+    margin-left: 80px;
+}
+
+#input-text{ 
+    border: black 1px solid;
+    padding: 3px;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #038c0f;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.radio {
+    margin-right: 5px;
+}
+
+.radio-label {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    align-content: space-between;
+    height: 10px;
+}
+
+#searchBtn {
+    background-color: rgba(128, 128, 128, 0.748);
+    padding: 5px;
+    margin-top: 3px;
+    margin-left: 5px;
+}

@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function DoneRecipes() {
   return (
-    <p>Elemento inicial</p>
+    <Header title="Done Recipes" isSearch={ false } />
   );
 }
 

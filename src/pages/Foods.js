@@ -1,21 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Footer from '../components/Footer';
-import { getFoodsCategoriesThunk } from '../store/actions';
+import React from 'react';
+import Header from '../components/Header';
 
 function Foods() {
-  const foods = useSelector((state) => state.foods); // mapStateToProps
-  const dispatch = useDispatch(); // mapDispatchToProps
-
-  useEffect(() => {
-    dispatch(getFoodsCategoriesThunk());
-  }, []);
-
   return (
-    <div>
-      { foods.map((b, index) => <p key={ index }>{ b.strCategory }</p>) }
-      <Footer />
-    </div>
+    <Header title="Foods" isSearch type="meal" />
   );
 }
 
