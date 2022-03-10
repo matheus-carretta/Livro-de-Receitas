@@ -1,22 +1,23 @@
   .container-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 
   .sub-container-card {
-  border: solid gainsboro;
-  border-radius: 0.1px 20px 0.1px 0.1px;
-  display: block;
-  margin: 10px;
-  padding: 5px;
-  width: 120px;}
+    border: solid gainsboro;
+    border-radius: 0.1px 20px 0.1px 0.1px;
+    display: block;
+    margin: 10px;
+    padding: 5px;
+    width: 120px;
+  }
 
   .sub-container-card p {
-  padding-bottom: 10;
+    padding-bottom: 10;
   }
 
   .container-card img {
-  border-radius: 5px;
-  width: 120px;
+    border-radius: 5px;
+    width: 120px;
   }

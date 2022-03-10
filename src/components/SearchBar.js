@@ -92,7 +92,7 @@ export default function SearchBar({ type }) {
         <div className="div-text">
           <input
             type="text"
-            id="input-text"
+            className="input-text"
             placeholder="Search Recipe"
             data-testid="search-input"
             value={ searchInput }
@@ -140,7 +140,7 @@ export default function SearchBar({ type }) {
         <div className="button-div">
           <button
             type="button"
-            id="searchBtn"
+            className="searchBtn"
             data-testid="exec-search-btn"
             onClick={ handleSearch }
           >

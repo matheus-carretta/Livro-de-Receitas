@@ -15,15 +15,15 @@ export default function Header({ title, isSearch, type }) {
   return (
     <div className="container">
       <header>
-        <div id="profileHeader">
+        <div className="profileHeader">
           <Link to="/profile">
             <img data-testid="profile-top-btn" src={ profileIcon } alt="Profile" />
           </Link>
         </div>
-        <div id="titleHeader">
+        <div className="titleHeader">
           <h1 data-testid="page-title">{ title }</h1>
         </div>
-        <div id="searchHeader">
+        <div className="searchHeader">
           { isSearch && (
             <button
               type="button"
