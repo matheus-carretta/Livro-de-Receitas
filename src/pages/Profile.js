@@ -23,6 +23,7 @@ function Profile() {
       <button
         data-testid="profile-done-btn"
         type="button"
+        onClick={ () => history.push('/done-recipes') }
       >
         Done Recipes
       </button>
