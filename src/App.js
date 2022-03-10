@@ -38,8 +38,8 @@ export default function App() {
       <Route path="/profile" component={ Profile } />
       <Route path="/done-recipes" component={ DoneRecipes } />
       <Route path="/favorite-recipes" component={ Favorites } />
-      <Route path="/foods/:id" component={ FoodsDetails } />
-      <Route path="/drinks/:id" component={ FoodsDetails } />
+      <Route path="/foods/:id" component={ FoodDetails } />
+      <Route path="/drinks/:id" component={ FoodDetails } />
     </Switch>
   );
 }
