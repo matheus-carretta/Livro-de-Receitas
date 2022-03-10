@@ -1,8 +1,8 @@
-#card {
+.card {
   background-color: #E5E5E5;
-  border: 1px solid black;
-  box-shadow: 0px 2px 3px black;
   border-radius: 3px;
+  border: 1px solid black;
+  box-shadow: 0 2px 3px black;
   height: 200px;
   line-height: 350%;
   margin: 10px 2px;
@@ -11,7 +11,7 @@
   width: 48%;
 }
 
-#card-container {
+.card-container {
   display: flex;
   flex-wrap: wrap;
 }
