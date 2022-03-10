@@ -23,34 +23,6 @@
   padding: 3px;
 }
 
-input[ type = 'radio' ]:after {
-  border-radius: 15px;
-  height: 15px;
-  left: -1px;
-  width: 15px;
-  background-color: #d1d3d1;
-  top: -2px;
-  content: '';
-  position: relative;
-  border: 2px solid white;
-  display: inline-block; 
-  visibility: visible;
-}
-
-input[ type = 'radio' ]:checked:after {
-  border-radius: 15px;
-  height: 15px;
-  left: -1px;
-  width: 15px;
-  background-color: #038c0f;
-  top: -2px;
-  content: '';
-  position: relative;
-  border: 2px solid white;
-  display: inline-block;
-  visibility: visible;
-}
-
 .radio {
   margin-right: 5px;
 }
