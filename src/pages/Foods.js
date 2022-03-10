@@ -1,9 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Foods() {
   return (
-    <Header title="Foods" isSearch type="meal" />
+    <div>
+      <Header title="Foods" isSearch type="meal" />
+      <p>Página principal</p>
+      <Footer />
+    </div>
   );
 }
 
