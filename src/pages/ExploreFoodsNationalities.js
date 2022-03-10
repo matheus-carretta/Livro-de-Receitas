@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Header from '../components/Header';
+
 import Footer from '../components/Footer';
 import { fetchFoodsByNationality,
   fetchNationalities } from '../services/foodsCategoriesAPI';
@@ -41,6 +43,7 @@ function ExploreFoodsNationalities() {
 
   return (
     <div className="main">
+      <Header title="Explore Nationalities" isSearch />
       <select
         data-testid="explore-by-nationality-dropdown"
         value={ nationality }

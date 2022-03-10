@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Header from '../components/Header';
 import { fetchIngredients } from '../services/foodsCategoriesAPI';
 import Footer from '../components/Footer';
 import { NUMBER_12 } from '../services/constants';
@@ -25,6 +26,7 @@ function ExploreFoodsIngredients() {
 
   return (
     <main>
+      <Header title="Explore Ingredients" isSearch={ false } />
       <div className="card-container">
         {ingredients.map(
           ({ strIngredient }, index) => (
