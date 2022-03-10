@@ -13,8 +13,6 @@ function SearchCard({ index, obj, type }) {
     return tipo;
   }
   const str = setType(type);
-  // const image = `str${str}Thumb`;
-  // const name = `str${str}`;
   return (
     <div className="sub-container-card" data-testid={ `${index}-recipe-card` }>
       <img data-testid={ `${index}-card-img` } src={ obj[`str${str}Thumb`] } alt="" />

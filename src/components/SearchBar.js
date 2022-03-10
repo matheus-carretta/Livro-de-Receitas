@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { TWOELVEN, GLOBAL_ALERT } from '../services/constants';
 import SearchCard from './SearchCard';
 import '../styles/Search.css';
+import { firstLetterAPI, ingredientAPI, nameAPI } from '../services/APIs';
 
 export default function SearchBar({ type }) {
   const [searchInput, setSearchInput] = useState('');
@@ -13,6 +14,7 @@ export default function SearchBar({ type }) {
 
   const setData = (data) => {
     const mealsArray = data;
+    console.log(data);
     if (data === null || mealsArray.length === 0 || mealsArray === null) {
       global.alert(GLOBAL_ALERT);
     }
@@ -20,10 +22,8 @@ export default function SearchBar({ type }) {
     console.log(twelveDrinkIngredients[0]);
     if (type === 'meal' && twelveDrinkIngredients.length === 1) {
       history.push(`/foods/${twelveDrinkIngredients[0].idMeal}`);
-      console.log('entrei');
     } else if (type === 'cocktail' && twelveDrinkIngredients.length === 1) {
       history.push(`/drinks/${twelveDrinkIngredients[0].idDrink}`);
-      console.log('entrem em baixo');
     }
     setResultsApi(twelveDrinkIngredients);
   };
@@ -47,19 +47,17 @@ export default function SearchBar({ type }) {
 
   const handleSearch = async () => {
     try {
-      let { data, result } = [];
+      let { result } = [];
       switch (searching) {
       case 'ingredient':
-        data = await fetch(`https://www.the${type}db.com/api/json/v1/1/filter.php?i=${searchInput}`);
-        result = await data.json();
+        result = await ingredientAPI(type, searchInput);
         if (type === 'cocktail') {
           setData(result.drinks);
         }
         setData(result.meals);
         break;
       case 'name':
-        data = await fetch(`https://www.the${type}db.com/api/json/v1/1/search.php?s=${searchInput}`);
-        result = await data.json();
+        result = await nameAPI(type, searchInput);
         if (type === 'cocktail') {
           setData(result.drinks);
         }
@@ -69,8 +67,7 @@ export default function SearchBar({ type }) {
         if (searchInput.length > 1) {
           global.alert('Your search must have only 1 (one) character');
         }
-        data = await fetch(`https://www.the${type}db.com/api/json/v1/1/search.php?f=${searchInput}`);
-        result = await data.json();
+        result = await firstLetterAPI(type, searchInput);
         if (type === 'cocktail') {
           setData(result.drinks);
         }
@@ -80,8 +77,7 @@ export default function SearchBar({ type }) {
         break;
       }
       handleAlert(result);
-    } catch (e) {
-      // global.alert(GLOBAL_ALERT);
+    } catch {
       console.log(e);
     }
   };

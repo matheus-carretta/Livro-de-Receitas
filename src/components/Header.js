@@ -7,11 +7,7 @@ import '../styles/Header.css';
 import SearchBar from './SearchBar';
 
 export default function Header({ title, isSearch, type }) {
-  const [toogleSearch, setSearch] = useState(false);
-  function toogleBar() {
-    setSearch(!toogleSearch);
-    console.log(toogleSearch);
-  }
+  const [toogleSearch, setToogleSearch] = useState(false);
   return (
     <div className="container">
       <header>
@@ -27,7 +23,7 @@ export default function Header({ title, isSearch, type }) {
           { isSearch && (
             <button
               type="button"
-              onClick={ toogleBar }
+              onClick={ () => setToogleSearch(!toogleSearch) }
             >
               <img src={ searchIcon } data-testid="search-top-btn" alt="search-button" />
             </button>

@@ -27,3 +27,21 @@ export const foodsAPI = async () => {
   const drinks = await response.json();
   return drinks;
 };
+
+export const ingredientAPI = async (type, text) => {
+  const response = await fetch(`https://www.the${type}db.com/api/json/v1/1/filter.php?i=${text}`);
+  const ingredients = await response.json();
+  return ingredients;
+};
+
+export const nameAPI = async (type, text) => {
+  const response = await fetch(`https://www.the${type}db.com/api/json/v1/1/search.php?s=${text}`);
+  const name = await response.json();
+  return name;
+};
+
+export const firstLetterAPI = async (type, text) => {
+  const response = await fetch(`https://www.the${type}db.com/api/json/v1/1/search.php?f=${text}`);
+  const firstLetter = await response.json();
+  return firstLetter;
+};
