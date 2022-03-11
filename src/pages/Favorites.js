@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function Favorites() {
   return (
-    <p>Elemento inicial</p>
+    <Header title="Favorite Recipes" isSearch={ false } />
   );
 }
 

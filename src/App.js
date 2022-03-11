@@ -43,6 +43,17 @@ export default function App() {
         component={ ExploreFoodsIngredients }
       />
       <Route
+        exact
+        path="/explore/drinks/ingredients"
+        component={ ExploreDrinksIngredients }
+      />
+      <Route
+        exact
+        path="/explore/foods/ingredients"
+        component={ ExploreFoodsIngredients }
+      />
+      <Route
+        exact
         path="/explore/foods/nationalities"
         component={ ExploreFoodsNationalities }
       />
