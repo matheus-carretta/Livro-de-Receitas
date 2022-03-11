@@ -1,0 +1,95 @@
+.main-content {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button-container > .filter-btn {
+  background-color: #e5e5e5;
+  border: none;
+  border-radius: 3px;
+  font-weight: 900;
+  height: 3em;
+  margin: 10px 0;
+  width: 6em;
+}
+
+.recipe-card {
+  border-radius: 3px;
+  box-shadow: 0 2px 3px black;
+  display: flex;
+  flex-direction: row;
+  margin: 0.7em 0;
+  max-height: 150px;
+}
+
+.recipe-img-container {
+  display: flex;
+  width: 50%;
+}
+
+.recipe-img-container > img {
+  border-radius: 3px 0 0 3px;
+  width: 100%;
+}
+
+.card-infos {
+  display: flex;
+  flex-direction: column;
+  margin: 0 3px;
+  overflow: hidden;
+  width: 50%;
+}
+
+.card-top-options {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: small;
+  justify-content: space-evenly;
+  max-height: 150px;
+}
+
+.card-top-options > button {
+  background-color: transparent;
+  border: none;
+}
+
+.text-info {
+  color: grey;
+  font-size: small;
+  font-weight: 300;
+  margin-left: 0;
+  margin-top: 3px;
+}
+
+.food-drink-name {
+  color: black;
+  font-size: 1.1em;
+  font-weight: 800;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+}
+
+.doneInText {
+  font-size: 1em;
+  margin: 5px auto;
+}
+
+.tags-container {
+  display: flex;
+  flex-flow: row-wrap;
+}
+
+.tag {
+  background-color: burlywood;
+  border-radius: 20px;
+  font-size: 1em;
+  margin: 0 auto;
+  padding: 1px 10px;
+}

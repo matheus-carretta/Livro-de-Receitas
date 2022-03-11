@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import { fetchIngredients } from '../services/foodsCategoriesAPI';
 import Footer from '../components/Footer';
-import { NUMBER_12 } from '../services/constants';
+import { NUMBER_12, ZERO } from '../services/constants';
 import '../styles/ExploreFoodsIngredients.css';
 
 function ExploreFoodsIngredients() {
@@ -12,17 +12,13 @@ function ExploreFoodsIngredients() {
 
   const getIngredients = async () => {
     const { meals } = await fetchIngredients('themealdb');
-    const only12Ingredients = meals.slice(0, NUMBER_12);
+    const only12Ingredients = meals.slice(ZERO, NUMBER_12);
     setIngredients(only12Ingredients);
   };
 
   useEffect(() => {
     getIngredients();
   }, []);
-
-  const redirectToFoods = () => {
-    history.push('/foods');
-  };
 
   return (
     <main>
@@ -34,7 +30,7 @@ function ExploreFoodsIngredients() {
               key={ index }
               data-testid={ `${index}-ingredient-card` }
               className="card"
-              onClick={ redirectToFoods }
+              onClick={ () => history.push('/foods') }
               role="button"
               tabIndex={ 0 }
               aria-hidden="true"
