@@ -75,7 +75,7 @@ export default function SearchBar({ type }) {
         break;
       }
       handleAlert(result);
-    } catch {
+    } catch (e) {
       console.log(e);
     }
   };
