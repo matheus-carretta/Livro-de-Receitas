@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { fetchIngredients } from '../services/foodsCategoriesAPI';
 import Footer from '../components/Footer';
-import { NUMBER_12 } from '../services/constants';
+import { NUMBER_12, ZERO } from '../services/constants';
 import '../styles/ExploreFoodsIngredients.css';
 
 function ExploreDrinksIngredients() {
@@ -11,17 +11,13 @@ function ExploreDrinksIngredients() {
 
   const getIngredients = async () => {
     const { drinks } = await fetchIngredients('thecocktaildb');
-    const only12Ingredients = drinks.slice(0, NUMBER_12);
+    const only12Ingredients = drinks.slice(ZERO, NUMBER_12);
     setIngredients(only12Ingredients);
   };
 
   useEffect(() => {
     getIngredients();
   }, []);
-
-  const redirectToDrinks = () => {
-    history.push('/drinks');
-  };
 
   return (
     <main>
@@ -32,7 +28,7 @@ function ExploreDrinksIngredients() {
               key={ index }
               data-testid={ `${index}-ingredient-card` }
               className="card"
-              onClick={ redirectToDrinks }
+              onClick={ () => history.push('/drinks') }
               role="button"
               tabIndex={ 0 }
               aria-hidden="true"
