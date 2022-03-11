@@ -14,12 +14,10 @@ export default function SearchBar({ type }) {
 
   const setData = (data) => {
     const mealsArray = data;
-    console.log(data);
     if (data === null || mealsArray.length === 0 || mealsArray === null) {
       global.alert(GLOBAL_ALERT);
     }
     const twelveDrinkIngredients = mealsArray.splice(0, TWOELVEN);
-    console.log(twelveDrinkIngredients[0]);
     if (type === 'meal' && twelveDrinkIngredients.length === 1) {
       history.push(`/foods/${twelveDrinkIngredients[0].idMeal}`);
     } else if (type === 'cocktail' && twelveDrinkIngredients.length === 1) {
