@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import '../styles/DoneRecipes.css';
@@ -71,6 +72,7 @@ function DoneRecipes() {
 
   return (
     <main className="main-content">
+      <Header title="Done Recipes" isSearch={ false } />
       <div className="button-container">
         <button
           type="button"
