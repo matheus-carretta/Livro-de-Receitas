@@ -7,7 +7,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, renderIngredients, renderRecommendations,
-  checkFavorite } from '../services/recipeDetailsAndProgressFunctions';
+  checkFavorite, checkInProgress } from '../services/recipeDetailsAndProgressFunctions';
 import '../styles/RecipeDetails.css';
 import Loading from '../components/Loading';
 
@@ -27,6 +27,7 @@ function DrinkDetails() {
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
 
   useEffect(() => {
     dispatch(getRecipeDetailsThunk(id, 'drinks'));
@@ -42,6 +43,7 @@ function DrinkDetails() {
 
   useEffect(() => {
     setIsFavorite(checkFavorite(id));
+    setInProgress(checkInProgress('cocktails', id));
   }, [id]);
 
   const handleShare = () => {
@@ -127,7 +129,7 @@ function DrinkDetails() {
               data-testid="start-recipe-btn"
               onClick={ () => history.push(`/drinks/${id}/in-progress`, { from: id }) }
             >
-              Start Recipe
+              { inProgress ? 'Continue Recipe' : 'Start Recipe' }
             </button>
           </div>
         </main>

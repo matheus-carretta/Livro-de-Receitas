@@ -13,7 +13,6 @@ export const checkFavorite = (id) => {
 };
 
 export const addFavorite = (recipeDetails, type) => {
-  console.log(recipeDetails);
   const getFavoriteRecipes = localStorage.getItem('favoriteRecipes');
 
   const {
@@ -73,6 +72,15 @@ export const renderIngredients = (recipeDetails) => {
       ))}
     </ul>
   );
+};
+
+export const checkInProgress = (type, id) => {
+  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+  if (inProgressRecipes !== null
+    && inProgressRecipes[type]
+    && inProgressRecipes[type][id]) return true;
+  return false;
 };
 
 export const validateFinishBtn = () => {
