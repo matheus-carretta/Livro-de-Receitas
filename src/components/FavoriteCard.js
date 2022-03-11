@@ -6,7 +6,7 @@ import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const FavoriteCard = ({ index, recipe, removeFavorite }) => {
-  const [linkCopied, setLinkCopied] = useState(false);
+  const [copied, setLinkCopied] = useState(false);
 
   const { id, type, name, nationality, image } = recipe;
   const category = recipe.type === 'food' ? recipe.category : recipe.alcoholicOrNot;
@@ -23,7 +23,6 @@ const FavoriteCard = ({ index, recipe, removeFavorite }) => {
           alt={ name }
           data-testid={ `${index}-horizontal-image` }
           src={ image }
-          style={ { width: '100%' } }
         />
 
         <p data-testid={ `${index}-horizontal-top-text` }>
@@ -46,11 +45,7 @@ const FavoriteCard = ({ index, recipe, removeFavorite }) => {
         />
       </button>
 
-      {
-        linkCopied && (
-          <p>Link copied!</p>
-        )
-      }
+      {copied && <p className="copiedPopUp">Link copied!</p>}
 
       <button
         type="button"

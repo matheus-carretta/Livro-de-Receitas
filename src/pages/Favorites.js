@@ -6,6 +6,7 @@ import { removeFavorite } from '../services/functions';
 function Favorites() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [recipeFilter, setFilter] = useState('all');
+
   useEffect(() => {
     const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const filteredRecipes = getFavorites.filter((recipe) => {
