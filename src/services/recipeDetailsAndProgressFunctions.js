@@ -13,6 +13,7 @@ export const checkFavorite = (id) => {
 };
 
 export const addFavorite = (recipeDetails, type) => {
+  console.log(recipeDetails);
   const getFavoriteRecipes = localStorage.getItem('favoriteRecipes');
 
   const {
@@ -94,7 +95,7 @@ export const checkProgress = (type, id) => {
         const ingredient = document.querySelector(`#${ingredientId}`);
         const checkbox = document.querySelector(`#${item}`);
 
-        checkbox.checked = true;
+        checkbox.setAttribute('checked', 'checked');
         return ingredient.classList.add('item-done');
       });
     }
@@ -151,10 +152,11 @@ export const renderIngredientsInProgress = (recipeDetails, type, routeId) => {
   return (
     <ul className="text-container">
       { allIngredients.map((ingredient, index) => (
-        <li
+        <label
           key={ index }
           className="ingredientItemInProgress"
           data-testid={ `${index}-ingredient-step` }
+          htmlFor={ `ingredient-${index}` }
         >
           <input
             type="checkbox"
@@ -167,7 +169,7 @@ export const renderIngredientsInProgress = (recipeDetails, type, routeId) => {
           >
             {ingredient}
           </span>
-        </li>
+        </label>
       ))}
     </ul>
   );

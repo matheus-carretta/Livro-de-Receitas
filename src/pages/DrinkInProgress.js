@@ -20,6 +20,7 @@ function DrinkInProgress() {
 
   const route = pathname.replace('/drinks/', '');
   const id = route.replace('/in-progress', '');
+  const clipBoardRoute = pathname.replace('/in-progress', '');
 
   const drinkDetails = useSelector((state) => state.recipeDetails);
 
@@ -50,12 +51,12 @@ function DrinkInProgress() {
   }, [loading, id]);
 
   const handleShare = () => {
-    copy(`http://localhost:3000${pathname}`);
+    copy(`http://localhost:3000${clipBoardRoute}`);
     setCopied(true);
   };
 
   const setFavorite = () => {
-    addFavorite(foodDetails, 'Drink');
+    addFavorite(drinkDetails, 'Drink');
     setIsFavorite(true);
   };
 
@@ -105,8 +106,6 @@ function DrinkInProgress() {
             </div>
 
             <span className="category" data-testid="recipe-category">{strAlcoholic}</span>
-
-            <input className="category" type="checkbox" value={ strAlcoholic } />
 
             <button
               className="section"
