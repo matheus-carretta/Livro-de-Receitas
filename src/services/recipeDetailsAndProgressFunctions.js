@@ -74,6 +74,105 @@ export const renderIngredients = (recipeDetails) => {
   );
 };
 
+export const validateFinishBtn = () => {
+  const allCheckboxes = document.querySelectorAll('input');
+  const allUncheckeds = Array.from(allCheckboxes).filter((checkbox) => !checkbox.checked);
+
+  return allUncheckeds.length !== 0;
+};
+
+export const checkProgress = (type, id) => {
+  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+  if (inProgressRecipes !== null
+      && Object.keys(inProgressRecipes).includes(type)
+      && Object.keys(inProgressRecipes[type]).includes(id)) {
+    const itemsDone = inProgressRecipes[type][id];
+    if (itemsDone.length > 0) {
+      itemsDone.map((item) => {
+        const ingredientId = item.replace('checkbox', 'ingredient');
+        const ingredient = document.querySelector(`#${ingredientId}`);
+        const checkbox = document.querySelector(`#${item}`);
+
+        checkbox.checked = true;
+        return ingredient.classList.add('item-done');
+      });
+    }
+  }
+};
+
+function updateProgressToStorage(type, id) {
+  const checkeds = document.querySelectorAll('input:checked');
+  const checkedsId = Array.from(checkeds).map((ingredient) => ingredient.id);
+  const previousInProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  let inProgressRecipes = {
+    [type]: { [id]: checkedsId },
+  };
+
+  if (previousInProgressRecipes !== null) {
+    inProgressRecipes = {
+      ...previousInProgressRecipes,
+      [type]: {
+        ...previousInProgressRecipes[type],
+        [id]: checkedsId,
+      },
+    };
+  }
+
+  localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+}
+
+function handleCheckBox(id, type, routeId) {
+  const idNumber = id.slice(id.length - 1);
+  const check = document.querySelector(`#${id}`).checked;
+  const ingredient = document.querySelector(`#ingredient-${idNumber}`);
+
+  if (check) {
+    ingredient.classList.add('item-done');
+    return updateProgressToStorage(type, routeId);
+  }
+  ingredient.classList.remove('item-done');
+  return updateProgressToStorage(type, routeId);
+}
+
+export const renderIngredientsInProgress = (recipeDetails, type, routeId) => {
+  const allIngredients = [];
+
+  for (let i = MIN_INGREDIENTS; i < MAX_INGREDIENTS; i += 1) {
+    const ingredientIndex = `strIngredient${i}`;
+    const measureIndex = `strMeasure${i}`;
+    const ingredientValue = recipeDetails[ingredientIndex];
+    const measureValue = recipeDetails[measureIndex];
+    const item = `${ingredientValue} - ${measureValue}`;
+
+    if (ingredientValue) allIngredients.push(item);
+  }
+
+  return (
+    <ul className="text-container">
+      { allIngredients.map((ingredient, index) => (
+        <li
+          key={ index }
+          className="ingredientItemInProgress"
+          data-testid={ `${index}-ingredient-step` }
+        >
+          <input
+            type="checkbox"
+            id={ `checkbox-${index}` }
+            onClick={ () => handleCheckBox(`checkbox-${index}`, type, routeId) }
+          />
+          <span
+            className="ingredientItem"
+            id={ `ingredient-${index}` }
+          >
+            {ingredient}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 export const renderRecommendations = (recomendationType, type) => {
   const recommended = [];
   const typeCapitalized = type.charAt(0).toUpperCase() + type.slice(1);

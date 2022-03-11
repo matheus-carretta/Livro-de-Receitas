@@ -49,11 +49,17 @@
   font-size: 1em;
 }
 
-section {
+.section, section {
   display: flex;
   flex-direction: column;
   padding: 0;
   padding-top: 1em;
+}
+
+.section {
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .text-container {
@@ -68,12 +74,31 @@ section {
   padding: 0.7em;
 }
 
+.text-container-in-progress {
+  margin-bottom: 3em;
+}
+
 .ingredientItem {
   font-size: 1em;
   list-style-type: '- ';
   margin: 0;
   margin-left: 0.5em;
   text-align: center;
+}
+
+.ingredientItemInProgress {
+  align-items: center;
+  display: flex;
+  line-height: 1.9em;
+  list-style-type: none;
+}
+
+.ingredientItemInProgress > input {
+  transform: scale(1.8);
+}
+
+.item-done {
+  text-decoration: line-through;
 }
 
 span {

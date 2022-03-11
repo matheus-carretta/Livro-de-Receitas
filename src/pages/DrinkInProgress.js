@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getRecipeDetailsThunk, getRecommendationThunk } from '../store/actions';
+import Loading from '../components/Loading';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
-import { addFavorite, removeFavorite, renderIngredients, renderRecommendations,
-  checkFavorite } from '../services/recipeDetailsAndProgressFunctions';
-import '../styles/RecipeDetails.css';
-import Loading from '../components/Loading';
+import { addFavorite, removeFavorite, renderIngredientsInProgress, checkFavorite,
+  checkProgress, validateFinishBtn } from '../services/recipeDetailsAndProgressFunctions';
+import { getRecipeDetailsThunk } from '../store/actions';
 
 const copy = require('clipboard-copy');
 
-function DrinkDetails() {
+function DrinkInProgress() {
+  const [loading, setLoading] = useState(true);
+
   const history = useHistory();
   const { location: { pathname } } = history;
 
+  const route = pathname.replace('/drinks/', '');
+  const id = route.replace('/in-progress', '');
+
   const drinkDetails = useSelector((state) => state.recipeDetails);
-  const meals = useSelector((state) => state.recommendations);
 
   const dispatch = useDispatch();
 
-  const id = pathname.replace('/drinks/', '');
-
-  const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [recipeFinished, setRecipeFinished] = useState(true);
 
   useEffect(() => {
     dispatch(getRecipeDetailsThunk(id, 'drinks'));
-    dispatch(getRecommendationThunk('meals'));
   }, [dispatch, id]);
 
   useEffect(() => {
@@ -44,13 +44,18 @@ function DrinkDetails() {
     setIsFavorite(checkFavorite(id));
   }, [id]);
 
+  useEffect(() => {
+    if (document.querySelector('.ingredientItem')) checkProgress('cocktails', id);
+    setRecipeFinished(validateFinishBtn());
+  }, [loading, id]);
+
   const handleShare = () => {
     copy(`http://localhost:3000${pathname}`);
     setCopied(true);
   };
 
   const setFavorite = () => {
-    addFavorite(drinkDetails, 'Drink');
+    addFavorite(foodDetails, 'Drink');
     setIsFavorite(true);
   };
 
@@ -58,6 +63,8 @@ function DrinkDetails() {
     removeFavorite(id);
     setIsFavorite(false);
   };
+
+  const handleClick = () => setRecipeFinished(validateFinishBtn());
 
   const { strDrinkThumb, strDrink, strAlcoholic, strInstructions } = drinkDetails;
 
@@ -99,24 +106,25 @@ function DrinkDetails() {
 
             <span className="category" data-testid="recipe-category">{strAlcoholic}</span>
 
-            <section>
+            <input className="category" type="checkbox" value={ strAlcoholic } />
+
+            <button
+              className="section"
+              type="button"
+              onClick={ handleClick }
+            >
               <span>Ingredients</span>
-              { renderIngredients(drinkDetails) }
-            </section>
+              { renderIngredientsInProgress(drinkDetails, 'cocktails', id) }
+            </button>
 
             <section>
               <span>Instructions</span>
               <p
-                className="text-container"
+                className="text-container text-container-in-progress"
                 data-testid="instructions"
               >
                 {strInstructions}
               </p>
-            </section>
-
-            <section>
-              <span>Recommended</span>
-              { renderRecommendations(meals, 'meal') }
             </section>
 
             {copied && <p className="copiedPopUp">Link copied!</p>}
@@ -124,14 +132,15 @@ function DrinkDetails() {
             <button
               className="startRecipeBtn"
               type="button"
-              data-testid="start-recipe-btn"
-              onClick={ () => history.push(`/drinks/${id}/in-progress`, { from: id }) }
+              data-testid="finish-recipe-btn"
+              onClick={ () => history.push('/done-recipes') }
+              disabled={ recipeFinished }
             >
-              Start Recipe
+              Finish Recipe
             </button>
           </div>
         </main>
       ));
 }
 
-export default DrinkDetails;
+export default DrinkInProgress;

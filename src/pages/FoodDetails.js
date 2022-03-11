@@ -7,7 +7,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, URL, renderIngredients, renderRecommendations,
-  checkFavorite } from '../services/functions';
+  checkFavorite } from '../services/recipeDetailsAndProgressFunctions';
 import '../styles/RecipeDetails.css';
 import Loading from '../components/Loading';
 
@@ -143,7 +143,7 @@ function FoodDetails() {
               className="startRecipeBtn"
               type="button"
               data-testid="start-recipe-btn"
-              onClick={ () => history.push('/recipe-in-progress') }
+              onClick={ () => history.push(`/foods/${id}/in-progress`, { from: id }) }
             >
               Start Recipe
             </button>
