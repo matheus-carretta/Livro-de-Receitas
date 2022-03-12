@@ -9,8 +9,6 @@ function Profile() {
 
   const history = useHistory();
 
-  console.log(getUserEmailObj.email);
-
   return (
     <div>
       <Header title="Profile" isSearch={ false } />
