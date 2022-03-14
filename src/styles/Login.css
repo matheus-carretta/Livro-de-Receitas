@@ -1,0 +1,43 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    height: 60px;
+    font-style: normal;
+    margin-bottom: 10px;
+}
+
+button{
+    width: 15%;
+    margin: 22px;
+    border: 1px solid #00FF00;
+    color: black;
+    background-color: #00FF00;
+    padding: 10px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+input{
+    margin: 20px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
