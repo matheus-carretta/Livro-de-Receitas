@@ -1,31 +1,31 @@
-.container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.btnsProfile {
+  width: 15%;
+  margin: 10px;
+  border: 1px solid rgb(163, 163, 163);
+  color: black;
+  background-color: rgb(163, 163, 163);
+  padding: 10px;
 }
 
-.emailProfile{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    height: 60px;
-    font-style: normal;
-    margin-bottom: 10px;
-    margin-top: 25px;
+.btnsProfile:hover {
+  cursor: pointer;
 }
 
-.btnsProfile{
-    width: 15%;
-    margin: 10px;
-    border: 1px solid rgb(163, 163, 163);
-    color: black;
-    background-color: rgb(163, 163, 163);
-    padding: 10px;
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.btnsProfile:hover{
-    cursor: pointer;
+.emailProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  height: 60px;
+  font-style: normal;
+  margin-bottom: 10px;
+  margin-top: 25px;
 }
