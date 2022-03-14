@@ -20,7 +20,6 @@ function DrinkInProgress() {
 
   const route = pathname.replace('/drinks/', '');
   const id = route.replace('/in-progress', '');
-  const clipBoardRoute = pathname.replace('/in-progress', '');
 
   const drinkDetails = useSelector((state) => state.recipeDetails);
 
@@ -51,7 +50,7 @@ function DrinkInProgress() {
   }, [loading, id]);
 
   const handleShare = () => {
-    copy(`http://localhost:3000${clipBoardRoute}`);
+    copy(`http://localhost:3000/drinks/${id}`);
     setCopied(true);
   };
 

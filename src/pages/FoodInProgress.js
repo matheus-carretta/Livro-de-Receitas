@@ -20,7 +20,6 @@ function FoodInProgress() {
 
   const route = pathname.replace('/foods/', '');
   const id = route.replace('/in-progress', '');
-  const clipBoardRoute = pathname.replace('/in-progress', '');
 
   const foodDetails = useSelector((state) => state.recipeDetails);
 
@@ -51,7 +50,7 @@ function FoodInProgress() {
   }, [loading, id]);
 
   const handleShare = () => {
-    copy(`http://localhost:3000${clipBoardRoute}`);
+    copy(`http://localhost:3000/foods/${id}`);
     setCopied(true);
   };
 
