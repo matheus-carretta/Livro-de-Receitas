@@ -8,10 +8,10 @@
   justify-content: space-evenly;
 }
 
-.favorite-buttons{
+.favorite-buttons {
   background-color: gray;
-  padding: 2%;
   margin-right: 2px;
+  padding: 2%;
 }
 
 .favorite-buttons-container {
