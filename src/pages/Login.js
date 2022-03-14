@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <div className="container">
-      <h2>Login</h2>
+      <h2 className="titleLogin">Login</h2>
       <form onSubmit={ onSubmit } className="container">
         <label htmlFor="email-input">
           <input
@@ -37,6 +37,7 @@ function Login() {
             id="email-input"
             name="email-input"
             placeholder="Email"
+            className="inputLogin"
             value={ email }
             onChange={ handleChange }
           />
@@ -49,6 +50,7 @@ function Login() {
             id="password-input"
             name="password-input"
             placeholder="Senha"
+            className="inputLogin"
             value={ password }
             onChange={ passwordChange }
           />
@@ -57,6 +59,7 @@ function Login() {
         <button
           data-testid="login-submit-btn"
           type="submit"
+          className="btnLogin"
           onSubmit={ onSubmit }
           disabled={ btnLogin }
         >
