@@ -9,6 +9,9 @@ function Favorites() {
 
   useEffect(() => {
     const getFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    if (getFavorites === null) {
+      return [];
+    }
     const filteredRecipes = getFavorites.filter((recipe) => {
       if (recipeFilter === 'food' && recipe.type === 'food') return recipe;
       if (recipeFilter === 'drink' && recipe.type === 'drink') return recipe;
@@ -28,11 +31,12 @@ function Favorites() {
     <>
       <Header title="Favorite Recipes" isSearch={ false } />
       <div>
-        <form>
+        <form className="favorite-buttons-container">
           <button
             type="button"
             data-testid="filter-by-all-btn"
             onClick={ () => setFilter('all') }
+            className="favorite-buttons"
           >
             All
           </button>
@@ -41,6 +45,7 @@ function Favorites() {
             type="button"
             data-testid="filter-by-food-btn"
             onClick={ () => setFilter('food') }
+            className="favorite-buttons"
           >
             Food
           </button>
@@ -49,18 +54,21 @@ function Favorites() {
             type="button"
             data-testid="filter-by-drink-btn"
             onClick={ () => setFilter('drink') }
+            className="favorite-buttons"
           >
             Drinks
           </button>
         </form>
-        {favoriteRecipes.map((data, index) => (
-          <FavoriteCard
-            key={ index }
-            index={ index }
-            recipe={ data }
-            removeFavorite={ () => removeRecipeFavorite(data.id) }
-          />
-        )) }
+        <div className="favorite-container">
+          {favoriteRecipes.map((data, index) => (
+            <FavoriteCard
+              key={ index }
+              index={ index }
+              recipe={ data }
+              removeFavorite={ () => removeRecipeFavorite(data.id) }
+            />
+          )) }
+        </div>
       </div>
     </>
   );

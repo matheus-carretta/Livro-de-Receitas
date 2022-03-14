@@ -6,7 +6,13 @@ import '../styles/Profile.css';
 
 function Profile() {
   const getUserEmail = localStorage.getItem('user');
-  const getUserEmailObj = JSON.parse(getUserEmail);
+  // const getUserEmailObj = JSON.parse(getUserEmail);
+  const getUserEmailObj = (email) => {
+    if (email === null) {
+      return 'email@example.com';
+    }
+    return email.email;
+  };
 
   const history = useHistory();
 
@@ -16,7 +22,7 @@ function Profile() {
 
       <div className="container">
         <span data-testid="profile-email" className="emailProfile">
-          { getUserEmailObj.email }
+          { () => getUserEmailObj(getUserEmail) }
         </span>
 
         <button
