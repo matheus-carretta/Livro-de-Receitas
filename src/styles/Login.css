@@ -1,6 +1,6 @@
 .btnLogin {
-  background-color: #00ff00;
-  border: 1px solid #00ff00;
+  background-color: lime;
+  border: 1px solid lime;
   color: black;
   margin: 22px;
   padding: 10px;
@@ -8,7 +8,7 @@
 }
 
 .btnLogin:disabled {
-  background-color: #00ff00;
+  background-color: lime;
   opacity: 0.5;
 }
 
@@ -25,9 +25,9 @@
 }
 
 .inputLogin {
-  border-left: 0px;
-  border-right: 0px;
-  border-top: 0px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
   margin: 20px;
 }
 
