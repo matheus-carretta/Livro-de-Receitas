@@ -16,7 +16,7 @@ function Favorites() {
       if (recipeFilter === 'food' && recipe.type === 'food') return recipe;
       if (recipeFilter === 'drink' && recipe.type === 'drink') return recipe;
       if (recipeFilter === 'all') return recipe;
-      return null;
+      return [];
     });
     setFavoriteRecipes(filteredRecipes);
   }, [recipeFilter]);
