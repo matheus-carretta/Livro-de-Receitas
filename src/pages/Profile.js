@@ -10,12 +10,9 @@ function Profile() {
   const history = useHistory();
 
   useEffect(() => {
-    const getUserEmail = localStorage.getItem('user');
-    if (getUserEmail === null) {
-      setUserEmail('teste@teste.com');
-    } else {
-      const getUserEmailObj = JSON.parse(getUserEmail);
-      setUserEmail(getUserEmailObj.email);
+    const getUserEmail = JSON.parse(localStorage.getItem('user'));
+    if (getUserEmail !== null) {
+      setUserEmail(getUserEmail.email);
     }
   }, []);
 
