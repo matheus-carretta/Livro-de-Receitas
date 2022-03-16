@@ -1,0 +1,47 @@
+.btnLogin {
+  background-color: lime;
+  border: 1px solid lime;
+  color: black;
+  margin: 22px;
+  padding: 10px;
+  width: 15%;
+}
+
+.btnLogin:disabled {
+  background-color: lime;
+  opacity: 0.5;
+}
+
+.btnLogin:hover {
+  cursor: pointer;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.inputLogin {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 20px;
+}
+
+.inputLogin:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.titleLogin {
+  align-items: center;
+  display: flex;
+  font-size: 30px;
+  font-style: normal;
+  height: 60px;
+  justify-content: center;
+  margin-bottom: 10px;
+}

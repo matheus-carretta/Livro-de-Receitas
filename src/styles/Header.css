@@ -1,0 +1,28 @@
+* {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  align-items: center;
+  background-color: rgb(163, 163, 163);
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.profileHeader {
+  margin-top: 2px;
+}
+
+.searchHeader {
+  margin-top: 3px;
+
+}
+
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+}
