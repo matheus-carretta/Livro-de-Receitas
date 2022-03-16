@@ -13,7 +13,8 @@ function Login() {
   const handleChange = ({ target: { value } }) => setEmail(value);
   const passwordChange = ({ target: { value } }) => setPassword(value);
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     localStorage.setItem('user', JSON.stringify({ email }));

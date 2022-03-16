@@ -8,6 +8,9 @@ import SearchBar from './SearchBar';
 
 export default function Header({ title, isSearch, type }) {
   const [toogleSearch, setToogleSearch] = useState(false);
+  if (type === undefined) {
+    type = 'food';
+  }
   return (
     <div className="container">
       <header>

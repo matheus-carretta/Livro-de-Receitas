@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import '../styles/FavoriteCard.css';
 
 const FavoriteCard = ({ index, recipe, removeFavorite }) => {
   const [copied, setLinkCopied] = useState(false);
@@ -17,12 +18,13 @@ const FavoriteCard = ({ index, recipe, removeFavorite }) => {
   };
 
   return (
-    <div>
+    <div className="sub-container-card">
       <Link key={ index } to={ `/${recipe.type}s/${recipe.id}` }>
         <img
           alt={ name }
           data-testid={ `${index}-horizontal-image` }
           src={ image }
+          className="imageCard"
         />
 
         <p data-testid={ `${index}-horizontal-top-text` }>

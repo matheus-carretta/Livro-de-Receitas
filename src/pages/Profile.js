@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css';
 
 function Profile() {
-  const getUserEmail = localStorage.getItem('user');
-  const getUserEmailObj = JSON.parse(getUserEmail);
+  const [userEmail, setUserEmail] = useState('teste@teste.com');
 
   const history = useHistory();
+
+  useEffect(() => {
+    const getUserEmail = JSON.parse(localStorage.getItem('user'));
+    if (getUserEmail !== null) {
+      setUserEmail(getUserEmail.email);
+    }
+  }, []);
 
   return (
     <div>
@@ -16,7 +22,7 @@ function Profile() {
 
       <div className="container">
         <span data-testid="profile-email" className="emailProfile">
-          { getUserEmailObj.email }
+          { userEmail }
         </span>
 
         <button
