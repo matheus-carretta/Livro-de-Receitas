@@ -65,7 +65,11 @@ function FoodDetails() {
     strYoutube,
   } = foodDetails;
 
-  if (foodDetails.idMeal && loading) setLoading(false);
+  // if (foodDetails.idMeal && loading) setLoading(false);
+
+  const a = false;
+
+  if (a) setLoading(false);
 
   return (
     loading ? <Loading />

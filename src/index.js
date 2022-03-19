@@ -5,12 +5,17 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import './index.css';
+import FontStyles from './services/fonts/fontStyles';
+import { GlobalStyle } from './styles/GlobalStyle';
+// import './index.css';
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={ store }>
-      <App />
+      <FontStyles />
+      <GlobalStyle>
+        <App />
+      </GlobalStyle>
     </Provider>
   </BrowserRouter>,
   document.getElementById('root'),
