@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Loading from '../components/Loading';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/share.png';
+import whiteHeartIcon from '../images/whiteHeart.png';
+import pinkHeartIcon from '../images/pinkHeart.png';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, renderIngredientsInProgress, checkFavorite,
   checkProgress, validateFinishBtn } from '../services/recipeDetailsAndProgressFunctions';
 import { getRecipeDetailsThunk } from '../store/actions';
+import { Body, HeaderSubTitle, HeaderTitle, ImageContainer, ImgHeader, Instruction,
+  Section, TitleContainer, TitleContainerSt, Copied, StartButton,
+} from '../styles/RecipeDetails';
+import { Icon } from '../styles/Header';
 
 const copy = require('clipboard-copy');
 
@@ -74,69 +78,63 @@ function FoodInProgress() {
     loading ? <Loading />
       : (
         <main>
-          <div className="img-container">
-            <img src={ strMealThumb } alt="meal tumb" data-testid="recipe-photo" />
-          </div>
+          <ImageContainer>
+            <ImgHeader src={ strMealThumb } alt="meal tumb" data-testid="recipe-photo" />
+          </ImageContainer>
 
-          <div className="page-body">
-            <div className="title-container">
-              <h2 data-testid="recipe-title">{strMeal}</h2>
-              <button
-                type="button"
+          <TitleContainer>
+            <TitleContainerSt>
+              <HeaderTitle data-testid="recipe-title">{strMeal}</HeaderTitle>
+              <Icon
                 data-testid="share-btn"
                 onClick={ handleShare }
-              >
-                <img src={ shareIcon } alt="share button" />
-              </button>
-              <button
-                type="button"
+                src={ shareIcon }
+                alt="share button"
+                size="28px"
+                margin="4px"
+              />
+              <Icon
                 onClick={
                   isFavorite
                     ? () => unsetFavorite()
                     : () => setFavorite()
                 }
-              >
-                <img
-                  src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-                  alt="favorite button"
-                  data-testid="favorite-btn"
-                />
-              </button>
-            </div>
+                src={ isFavorite ? pinkHeartIcon : whiteHeartIcon }
+                alt="favorite button"
+                data-testid="favorite-btn"
+                size="35px"
+                margin="4px"
+              />
+            </TitleContainerSt>
+            <HeaderSubTitle data-testid="recipe-category">{strCategory}</HeaderSubTitle>
+          </TitleContainer>
 
-            <span className="category" data-testid="recipe-category">{strCategory}</span>
-
-            <button
-              className="section"
-              type="button"
-              onClick={ handleClick }
-            >
-              <span>Ingredients</span>
+          <Body>
+            <Section onClick={ handleClick }>
+              <h3>Ingredients</h3>
               { renderIngredientsInProgress(foodDetails, 'meals', id) }
-            </button>
+            </Section>
 
-            <section>
-              <span>Instructions</span>
-              <p
-                className="text-container text-container-in-progress"
+            <Section>
+              <h3>Instructions</h3>
+              <Instruction
+                margin="2.5em"
                 data-testid="instructions"
               >
                 {strInstructions}
-              </p>
-            </section>
+              </Instruction>
+            </Section>
 
-            {copied && <p className="copiedPopUp">Link copied!</p>}
+            {copied && <Copied>Link copied!</Copied>}
+          </Body>
 
-            <button
-              className="startRecipeBtn"
-              type="button"
-              data-testid="finish-recipe-btn"
-              onClick={ () => history.push('/done-recipes') }
-              disabled={ recipeFinished }
-            >
-              Finish Recipe
-            </button>
-          </div>
+          <StartButton
+            data-testid="finish-recipe-btn"
+            onClick={ () => history.push('/done-recipes') }
+            disabled={ recipeFinished }
+          >
+            Finish Recipe
+          </StartButton>
         </main>
       ));
 }

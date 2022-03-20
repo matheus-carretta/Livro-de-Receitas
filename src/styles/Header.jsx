@@ -23,3 +23,10 @@ export const Button = styled.button`
   background-repeat: no-repeat;
   border: none;
 `;
+
+export const Icon = styled.img`
+  height: ${({ size = '35px' }) => size};
+  width: ${({ size = '35px' }) => size};
+  margin-left: ${({ margin = '0px' }) => margin};
+  margin-right: ${({ margin = '0px' }) => margin};
+`;

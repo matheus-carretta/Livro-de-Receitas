@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
+import profileIcon from '../images/chef-hat.png';
+import searchIcon from '../images/lupa.png';
 import SearchBar from './SearchBar';
-import { HeaderContainer, Title } from '../styles/Header';
+import { HeaderContainer, Title, Icon } from '../styles/Header';
 
 export default function Header({ title, isSearch, type }) {
   const [toogleSearch, setToogleSearch] = useState(false);
@@ -16,7 +16,7 @@ export default function Header({ title, isSearch, type }) {
       <HeaderContainer>
         <div className="profileHeader">
           <Link to="/profile">
-            <img data-testid="profile-top-btn" src={ profileIcon } alt="Profile" />
+            <Icon data-testid="profile-top-btn" src={ profileIcon } alt="Profile" />
           </Link>
         </div>
         <div className="titleHeader">
@@ -24,18 +24,13 @@ export default function Header({ title, isSearch, type }) {
         </div>
         <div className="searchHeader">
           { isSearch && (
-            // <Button
-            //   type="button"
-            //   onClick={ () => setToogleSearch(!toogleSearch) }
-            // >
-            //   <img src={ searchIcon } data-testid="search-top-btn" alt="search-button" />
-            // </Button>
-            <img
+            <Icon
               src={ searchIcon }
               data-testid="search-top-btn"
               alt="search-button"
               onClick={ () => setToogleSearch(!toogleSearch) }
               aria-hidden="true"
+              size="28px"
             />
           ) }
         </div>

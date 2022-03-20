@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { LIGHT_BLACK, ORANGE } from './Colors';
 
-const FooterContainer = styled.footer`
+export const FooterContainer = styled.footer`
   align-items: center;
   background-color: ${ORANGE};
   bottom: 0;
@@ -14,4 +14,7 @@ const FooterContainer = styled.footer`
   border-top: solid ${LIGHT_BLACK} 0.1em;
 `;
 
-export default FooterContainer;
+export const Icon = styled.img`
+  height: 40px;
+  width: 40px;
+`;
