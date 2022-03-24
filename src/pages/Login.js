@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../styles/Login.css';
+import { Container, Input, FormContainer, Button } from '../styles/Login';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -28,11 +28,10 @@ function Login() {
   }, [email, password]);
 
   return (
-    <div className="container">
-      <h2 className="titleLogin">Login</h2>
+    <Container className="container">
       <form onSubmit={ onSubmit } className="container">
-        <label htmlFor="email-input">
-          <input
+        <FormContainer>
+          <Input
             data-testid="email-input"
             type="text"
             id="email-input"
@@ -41,11 +40,10 @@ function Login() {
             className="inputLogin"
             value={ email }
             onChange={ handleChange }
+            autoComplete="off"
           />
-        </label>
 
-        <label htmlFor="password-input">
-          <input
+          <Input
             data-testid="password-input"
             type="password"
             id="password-input"
@@ -55,19 +53,19 @@ function Login() {
             value={ password }
             onChange={ passwordChange }
           />
-        </label>
 
-        <button
-          data-testid="login-submit-btn"
-          type="submit"
-          className="btnLogin"
-          onSubmit={ onSubmit }
-          disabled={ btnLogin }
-        >
-          Enter
-        </button>
+          <Button
+            data-testid="login-submit-btn"
+            type="submit"
+            className="btnLogin"
+            onSubmit={ onSubmit }
+            disabled={ btnLogin }
+          >
+            Login
+          </Button>
+        </FormContainer>
       </form>
-    </div>
+    </Container>
   );
 }
 

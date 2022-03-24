@@ -1,5 +1,8 @@
 import React from 'react';
 import { ZERO, MAX_RECOMENDATIONS, MIN_INGREDIENTS, MAX_INGREDIENTS } from './constants';
+import { TextContainer, Item, Carousel, RecommendationCard, RecommendationImg,
+  ItemInProgress, RecommendationCategory, RecommendationName, HiddenCheckbox,
+} from '../styles/RecipeDetails';
 
 export const URL = (strYoutube = '') => strYoutube.replace('watch?v=', 'v/');
 
@@ -60,17 +63,13 @@ export const renderIngredients = (recipeDetails) => {
   }
 
   return (
-    <ul className="text-container">
+    <TextContainer>
       { allIngredients.map((ingredient, index) => (
-        <li
-          key={ index }
-          className="ingredientItem"
-          data-testid={ `${index}-ingredient-name-and-measure` }
-        >
+        <Item key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
           {ingredient}
-        </li>
+        </Item>
       ))}
-    </ul>
+    </TextContainer>
   );
 };
 
@@ -158,28 +157,28 @@ export const renderIngredientsInProgress = (recipeDetails, type, routeId) => {
   }
 
   return (
-    <ul className="text-container">
+    <TextContainer>
       { allIngredients.map((ingredient, index) => (
-        <label
+        <ItemInProgress
           key={ index }
-          className="ingredientItemInProgress"
           data-testid={ `${index}-ingredient-step` }
           htmlFor={ `ingredient-${index}` }
         >
-          <input
+          <HiddenCheckbox
             type="checkbox"
             id={ `checkbox-${index}` }
             onClick={ () => handleCheckBox(`checkbox-${index}`, type, routeId) }
           />
-          <span
+          <Item
+            as="span"
             className="ingredientItem"
             id={ `ingredient-${index}` }
           >
             {ingredient}
-          </span>
-        </label>
+          </Item>
+        </ItemInProgress>
       ))}
-    </ul>
+    </TextContainer>
   );
 };
 
@@ -192,26 +191,21 @@ export const renderRecommendations = (recomendationType, type) => {
   }
 
   return (
-    <div className={ `${type}-carousel` }>
+    <Carousel>
       {recommended.map((recomendation, index) => (
-        <div
-          key={ index }
-          className={ `${type}Card` }
-          data-testid={ `${index}-recomendation-card` }
-        >
-          <img
+        <RecommendationCard key={ index } data-testid={ `${index}-recomendation-card` }>
+          <RecommendationImg
             src={ recomendation[`str${typeCapitalized}Thumb`] }
             alt={ `${index}-${type}` }
           />
-          <span className={ `${type}Category` }>{recomendation.strCategory}</span>
-          <span
-            className={ `${type}Name` }
-            data-testid={ `${index}-recomendation-title` }
-          >
+          <RecommendationCategory>
+            {recomendation.strCategory}
+          </RecommendationCategory>
+          <RecommendationName data-testid={ `${index}-recomendation-title` }>
             {recomendation[`str${typeCapitalized}`]}
-          </span>
-        </div>
+          </RecommendationName>
+        </RecommendationCard>
       ))}
-    </div>
+    </Carousel>
   );
 };

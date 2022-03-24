@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import Wine from '../images/wine-glass.png';
 import Soup from '../images/soup.png';
 import Cardapio from '../images/cardapio.png';
-import '../styles/Footer.css';
+import { FooterContainer } from '../styles/Footer';
 
 function Footer() {
   return (
-    <footer data-testid="footer">
+    <FooterContainer data-testid="footer">
       <Link to="/drinks">
         <img
           src={ Wine }
@@ -35,7 +35,7 @@ function Footer() {
           data-testid="food-bottom-btn"
         />
       </Link>
-    </footer>
+    </FooterContainer>
   );
 }
 

@@ -1,8 +1,9 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { fetchRandomFoodOrDrinks } from '../services/foodsCategoriesAPI';
+import { FlexColumnContainer, ExploreBtn, ButtonLink } from '../styles/ExplorePages';
 
 function ExploreDrinks() {
   const history = useHistory();
@@ -14,20 +15,25 @@ function ExploreDrinks() {
   };
 
   return (
-    <div>
+    <FlexColumnContainer>
       <Header title="Explore Drinks" isSearch={ false } />
-      <Link to="/explore/drinks/ingredients">
-        <button type="button" data-testid="explore-by-ingredient">By Ingredient</button>
-      </Link>
-      <button
+      <ButtonLink to="/explore/drinks/ingredients">
+        <ExploreBtn
+          type="button"
+          data-testid="explore-by-ingredient"
+        >
+          By Ingredient
+        </ExploreBtn>
+      </ButtonLink>
+      <ExploreBtn
         type="button"
         data-testid="explore-surprise"
         onClick={ () => getRandomId('thecocktaildb') }
       >
         Surprise me!
-      </button>
+      </ExploreBtn>
       <Footer />
-    </div>
+    </FlexColumnContainer>
   );
 }
 

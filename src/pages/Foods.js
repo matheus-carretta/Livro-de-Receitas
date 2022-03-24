@@ -7,7 +7,7 @@ function Foods() {
     <div>
       <Header title="Foods" isSearch type="meal" />
       <p>Página principal</p>
-      <Footer />
+      <Footer position="fixed" />
     </div>
   );
 }

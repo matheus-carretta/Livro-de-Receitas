@@ -5,6 +5,7 @@ import { fetchIngredients } from '../services/foodsCategoriesAPI';
 import Footer from '../components/Footer';
 import { NUMBER_12, ZERO } from '../services/constants';
 import '../styles/ExploreFoodsIngredients.css';
+import { FlexColumnContainer } from '../styles/ExplorePages';
 
 function ExploreDrinksIngredients() {
   const [ingredients, setIngredients] = useState([]);
@@ -21,7 +22,7 @@ function ExploreDrinksIngredients() {
   }, []);
 
   return (
-    <main>
+    <FlexColumnContainer>
       <Header title="Explore Ingredients" isSearch={ false } />
       <div className="card-container">
         {ingredients.map(
@@ -46,7 +47,7 @@ function ExploreDrinksIngredients() {
         )}
       </div>
       <Footer />
-    </main>
+    </FlexColumnContainer>
   );
 }
 

@@ -1,20 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { FlexColumnContainer, ExploreBtn, ButtonLink } from '../styles/ExplorePages';
 
 function Explore() {
   return (
-    <div>
+    <FlexColumnContainer>
       <Header title="Explore" isSearch={ false } />
-      <Link to="/explore/foods">
-        <button type="button" data-testid="explore-foods">Explore Foods</button>
-      </Link>
-      <Link to="/explore/drinks">
-        <button type="button" data-testid="explore-drinks">Explore Drinks</button>
-      </Link>
+      <ButtonLink to="/explore/foods">
+        <ExploreBtn type="button" data-testid="explore-foods">Explore Foods</ExploreBtn>
+      </ButtonLink>
+      <ButtonLink to="/explore/drinks">
+        <ExploreBtn type="button" data-testid="explore-drinks">Explore Drinks</ExploreBtn>
+      </ButtonLink>
       <Footer />
-    </div>
+    </FlexColumnContainer>
   );
 }
 

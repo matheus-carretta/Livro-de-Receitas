@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getRecipeDetailsThunk, getRecommendationThunk } from '../store/actions';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/share.png';
+import whiteHeartIcon from '../images/whiteHeart.png';
+import pinkHeartIcon from '../images/pinkHeart.png';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, URL, renderIngredients, renderRecommendations,
   checkFavorite, checkInProgress } from '../services/recipeDetailsAndProgressFunctions';
-import '../styles/RecipeDetails.css';
 import Loading from '../components/Loading';
+import { ImageContainer, ImgHeader, Body, TitleContainer, HeaderTitle, TitleContainerSt,
+  HeaderSubTitle, Section, Instruction, StartButton, Copied, Video,
+} from '../styles/RecipeDetails';
+import { Icon } from '../styles/Header';
 
 const copy = require('clipboard-copy');
 
@@ -71,57 +74,58 @@ function FoodDetails() {
     loading ? <Loading />
       : (
         <main>
-          <div className="img-container">
-            <img src={ strMealThumb } alt="meal tumb" data-testid="recipe-photo" />
-          </div>
+          <ImageContainer>
+            <ImgHeader
+              src={ strMealThumb }
+              alt="meal tumb"
+              data-testid="recipe-photo"
+            />
+          </ImageContainer>
 
-          <div className="page-body">
-            <div className="title-container">
-              <h2 data-testid="recipe-title">{strMeal}</h2>
-              <button
-                type="button"
+          <TitleContainer>
+            <TitleContainerSt>
+              <HeaderTitle data-testid="recipe-title">{strMeal}</HeaderTitle>
+              <Icon
                 data-testid="share-btn"
                 onClick={ handleShare }
-              >
-                <img src={ shareIcon } alt="share button" />
-              </button>
-              <button
+                src={ shareIcon }
+                alt="share button"
+                size="28px"
+                margin="4px"
+              />
+              <Icon
                 type="button"
+                size="35px"
                 onClick={
                   isFavorite
                     ? () => unsetFavorite()
                     : () => setFavorite()
                 }
-              >
-                <img
-                  src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-                  alt="favorite button"
-                  data-testid="favorite-btn"
-                />
-              </button>
-            </div>
+                src={ isFavorite ? pinkHeartIcon : whiteHeartIcon }
+                alt="favorite button"
+                data-testid="favorite-btn"
+                margin="4px"
+              />
+            </TitleContainerSt>
+            <HeaderSubTitle data-testid="recipe-category">{strCategory}</HeaderSubTitle>
+          </TitleContainer>
 
-            <span className="category" data-testid="recipe-category">{strCategory}</span>
-
-            <section>
-              <span>Ingredients</span>
+          <Body>
+            <Section>
+              <h3>Ingredients</h3>
               { renderIngredients(foodDetails) }
-            </section>
+            </Section>
 
-            <section>
-              <span>Instructions</span>
-              <p
-                className="text-container"
-                data-testid="instructions"
-              >
+            <Section>
+              <h3>Instructions</h3>
+              <Instruction data-testid="instructions">
                 {strInstructions}
-              </p>
-            </section>
+              </Instruction>
+            </Section>
 
-            <section>
-              <span>Video</span>
-              <embed
-                className="text-container"
+            <Section>
+              <h3>Video</h3>
+              <Video
                 data-testid="video"
                 width="308"
                 height="198"
@@ -132,24 +136,23 @@ function FoodDetails() {
                 gyroscope; picture-in-picture"
                 allowFullScreen
               />
-            </section>
+            </Section>
 
-            <section>
-              <span>Recommended</span>
+            <Section>
+              <h3>Recommended</h3>
               { renderRecommendations(drinks, 'drink') }
-            </section>
+            </Section>
 
-            {copied && <p className="copiedPopUp">Link copied!</p>}
+            {copied && <Copied>Link copied!</Copied>}
+          </Body>
 
-            <button
-              className="startRecipeBtn"
-              type="button"
-              data-testid="start-recipe-btn"
-              onClick={ () => history.push(`/foods/${id}/in-progress`, { from: id }) }
-            >
-              { inProgress ? 'Continue Recipe' : 'Start Recipe' }
-            </button>
-          </div>
+          <StartButton
+            type="button"
+            data-testid="start-recipe-btn"
+            onClick={ () => history.push(`/foods/${id}/in-progress`, { from: id }) }
+          >
+            { inProgress ? 'Continue Recipe' : 'Start Recipe' }
+          </StartButton>
         </main>
       ));
 }

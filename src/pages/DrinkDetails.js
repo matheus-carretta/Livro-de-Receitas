@@ -24,7 +24,7 @@ function DrinkDetails() {
 
   const id = pathname.replace('/drinks/', '');
 
-  const [loading, setLoading] = useState(true);
+  const [loading] = useState(true);
   const [copied, setCopied] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [inProgress, setInProgress] = useState(false);
@@ -62,8 +62,6 @@ function DrinkDetails() {
   };
 
   const { strDrinkThumb, strDrink, strAlcoholic, strInstructions } = drinkDetails;
-
-  if (drinkDetails.idDrink && loading) setLoading(false);
 
   return (
     loading ? <Loading />

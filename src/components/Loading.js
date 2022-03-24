@@ -1,9 +1,13 @@
 import React from 'react';
-import '../styles/Loading.css';
+import loading from '../images/loading.gif';
+import { Container, Gif, Text } from '../styles/Loading';
 
 function Loading() {
   return (
-    <h1 className="loading">Carregando...</h1>
+    <Container>
+      <Gif src={ loading } alt="Loading Screen" />
+      <Text>Temperando...</Text>
+    </Container>
   );
 }
 
