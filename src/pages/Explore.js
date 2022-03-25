@@ -5,16 +5,23 @@ import { FlexColumnContainer, ExploreBtn, ButtonLink } from '../styles/ExplorePa
 
 function Explore() {
   return (
-    <FlexColumnContainer>
+    <>
       <Header title="Explore" isSearch={ false } />
-      <ButtonLink to="/explore/foods">
-        <ExploreBtn type="button" data-testid="explore-foods">Explore Foods</ExploreBtn>
-      </ButtonLink>
-      <ButtonLink to="/explore/drinks">
-        <ExploreBtn type="button" data-testid="explore-drinks">Explore Drinks</ExploreBtn>
-      </ButtonLink>
-      <Footer />
-    </FlexColumnContainer>
+      <FlexColumnContainer>
+        <ButtonLink to="/explore/foods">
+          <ExploreBtn type="button" data-testid="explore-foods">Explore Foods</ExploreBtn>
+        </ButtonLink>
+        <ButtonLink to="/explore/drinks">
+          <ExploreBtn
+            type="button"
+            data-testid="explore-drinks"
+          >
+            Explore Drinks
+          </ExploreBtn>
+        </ButtonLink>
+        <Footer />
+      </FlexColumnContainer>
+    </>
   );
 }
 

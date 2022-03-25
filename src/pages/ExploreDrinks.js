@@ -15,25 +15,27 @@ function ExploreDrinks() {
   };
 
   return (
-    <FlexColumnContainer>
+    <>
       <Header title="Explore Drinks" isSearch={ false } />
-      <ButtonLink to="/explore/drinks/ingredients">
+      <FlexColumnContainer>
+        <ButtonLink to="/explore/drinks/ingredients">
+          <ExploreBtn
+            type="button"
+            data-testid="explore-by-ingredient"
+          >
+            By Ingredient
+          </ExploreBtn>
+        </ButtonLink>
         <ExploreBtn
           type="button"
-          data-testid="explore-by-ingredient"
+          data-testid="explore-surprise"
+          onClick={ () => getRandomId('cocktail') }
         >
-          By Ingredient
+          Surprise me!
         </ExploreBtn>
-      </ButtonLink>
-      <ExploreBtn
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ () => getRandomId('thecocktaildb') }
-      >
-        Surprise me!
-      </ExploreBtn>
-      <Footer />
-    </FlexColumnContainer>
+        <Footer />
+      </FlexColumnContainer>
+    </>
   );
 }
 

@@ -13,6 +13,7 @@ import { Body, HeaderSubTitle, HeaderTitle, ImageContainer, ImgHeader, Instructi
   Section, TitleContainer, TitleContainerSt, Copied, StartButton,
 } from '../styles/RecipeDetails';
 import { Icon } from '../styles/Header';
+import { getTodayDate } from '../services/functions';
 
 const copy = require('clipboard-copy');
 
@@ -70,7 +71,31 @@ function FoodInProgress() {
 
   const handleClick = () => setRecipeFinished(validateFinishBtn());
 
-  const { strMealThumb, strMeal, strCategory, strInstructions } = foodDetails;
+  const { strMealThumb, strMeal, strCategory,
+    strInstructions, idMeal, strArea, strTags } = foodDetails;
+
+  const finishRecipe = async () => {
+    const todayDate = getTodayDate();
+    const newRecipe = {
+      id: idMeal,
+      type: 'food',
+      nationality: strArea,
+      category: strCategory,
+      alcoholicOrNot: '',
+      name: strMeal,
+      image: strMealThumb,
+      doneDate: todayDate,
+      tags: strTags && (strTags.split(',')),
+    };
+
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (doneRecipes === null) {
+      localStorage.setItem('doneRecipes', JSON.stringify([newRecipe]));
+    }
+    const newDoneRecipes = JSON.stringify([...doneRecipes, newRecipe]);
+    localStorage.setItem('doneRecipes', newDoneRecipes);
+    history.push('/done-recipes');
+  };
 
   if (foodDetails.idMeal && loading) setLoading(false);
 
@@ -130,7 +155,7 @@ function FoodInProgress() {
 
           <StartButton
             data-testid="finish-recipe-btn"
-            onClick={ () => history.push('/done-recipes') }
+            onClick={ () => finishRecipe() }
             disabled={ recipeFinished }
           >
             Finish Recipe

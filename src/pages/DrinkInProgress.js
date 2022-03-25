@@ -9,6 +9,7 @@ import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, renderIngredientsInProgress, checkFavorite,
   checkProgress, validateFinishBtn } from '../services/recipeDetailsAndProgressFunctions';
 import { getRecipeDetailsThunk } from '../store/actions';
+import { getTodayDate } from '../services/functions';
 
 const copy = require('clipboard-copy');
 
@@ -66,7 +67,32 @@ function DrinkInProgress() {
 
   const handleClick = () => setRecipeFinished(validateFinishBtn());
 
-  const { strDrinkThumb, strDrink, strAlcoholic, strInstructions } = drinkDetails;
+  const { strDrinkThumb, strDrink, strAlcoholic,
+    strInstructions, idDrink, strCategory } = drinkDetails;
+
+  const finishRecipe = async () => {
+    const todayDate = getTodayDate();
+    const newRecipe = {
+      id: idDrink,
+      type: 'drink',
+      nationality: '',
+      category: strCategory,
+      alcoholicOrNot: strAlcoholic,
+      name: strDrink,
+      image: strDrinkThumb,
+      doneDate: todayDate,
+      tags: [],
+    };
+
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (doneRecipes === null) {
+      localStorage.setItem('doneRecipes', JSON.stringify([newRecipe]));
+    }
+    const newDoneRecipes = JSON.stringify([...doneRecipes, newRecipe]);
+    localStorage.setItem('doneRecipes', newDoneRecipes);
+    console.log(drinkDetails);
+    history.push('/done-recipes');
+  };
 
   if (drinkDetails.idDrink && loading) setLoading(false);
 
@@ -131,7 +157,7 @@ function DrinkInProgress() {
               className="startRecipeBtn"
               type="button"
               data-testid="finish-recipe-btn"
-              onClick={ () => history.push('/done-recipes') }
+              onClick={ () => finishRecipe() }
               disabled={ recipeFinished }
             >
               Finish Recipe

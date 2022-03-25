@@ -5,9 +5,10 @@ import { LIGHT_BLACK, ORANGE, PINK, WHITE } from './Colors';
 export const FlexColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 100px);
   width: 100vw;
-  justify-content: space-between;
+  margin-bottom: 50px;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
@@ -48,4 +49,23 @@ export const Imagem = styled.img`
   width: 80px;
   height: 80px;
   border-radius: 50%;
+`;
+
+export const FlexWrapContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+`;
+
+export const Dropdown = styled.select`
+  font-size: 2.5rem;
+  background-color: #fdfbfb;
+  font-weight: 700;
+  outline: 0;
+  font-family: 'Spill Beans';
+  padding: 3px;
+  width: 96%;
+  margin-top: 0.2em;
+  margin-left: 0.2em;
+  border-radius: 20px;
 `;

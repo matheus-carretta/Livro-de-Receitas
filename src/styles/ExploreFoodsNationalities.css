@@ -16,11 +16,6 @@
   flex-wrap: wrap;
 }
 
-.card-image {
-  height: 60%;
-  width: fit-content;
-}
-
 .dropdown {
   font-size: 2.5rem;
   background-color: #fdfbfb;

@@ -5,13 +5,13 @@ export const foodsCategoriesAPI = async () => {
 };
 
 export const fetchRandomFoodOrDrinks = async (foodOrDrink) => {
-  const response = await fetch(`https://www.${foodOrDrink}.com/api/json/v1/1/random.php`);
+  const response = await fetch(`https://www.the${foodOrDrink}db.com/api/json/v1/1/random.php`);
   const data = await response.json();
   return data;
 };
 
 export const fetchIngredients = async (foodOrDrink) => {
-  const response = await fetch(`https://www.${foodOrDrink}.com/api/json/v1/1/list.php?i=list`);
+  const response = await fetch(`https://www.the${foodOrDrink}db.com/api/json/v1/1/list.php?i=list`);
   const data = await response.json();
   return data;
 };

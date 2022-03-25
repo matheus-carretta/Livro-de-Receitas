@@ -8,7 +8,8 @@ import { fetchFoodsByNationality,
   fetchNationalities } from '../services/foodsCategoriesAPI';
 import { NUMBER_12 } from '../services/constants';
 import '../styles/ExploreFoodsNationalities.css';
-import { IngredientsCard, Imagem } from '../styles/ExplorePages';
+import { IngredientsCard,
+  Imagem, FlexWrapContainer, Dropdown } from '../styles/ExplorePages';
 
 function ExploreFoodsNationalities() {
   const [nationality, setNationality] = useState('All');
@@ -31,6 +32,7 @@ function ExploreFoodsNationalities() {
   }, []);
 
   const setFoodsByNationality = async (selectNationality) => {
+    setIsLoading(true);
     const arrayFoods = await fetchFoodsByNationality(selectNationality);
     const only12Foods = arrayFoods.slice(0, NUMBER_12);
     setFoodArray(only12Foods);
@@ -49,7 +51,7 @@ function ExploreFoodsNationalities() {
     isLoading ? <Loading /> : (
       <div className="main">
         <Header title="Explore Nationalities" isSearch />
-        <select
+        <Dropdown
           data-testid="explore-by-nationality-dropdown"
           value={ nationality }
           onChange={ ({ target }) => setNationality(target.value) }
@@ -64,15 +66,13 @@ function ExploreFoodsNationalities() {
               { strArea }
             </option>
           ))}
-        </select>
-        <div className="card-container">
+        </Dropdown>
+        <FlexWrapContainer>
           {foodArray.map(({ idMeal, strMeal, strMealThumb }, index) => (
             <IngredientsCard
               key={ index }
               data-testid={ `${index}-recipe-card` }
               onClick={ () => redirectToFoodDetails(idMeal) }
-              role="button"
-              tabIndex={ 0 }
               aria-hidden="true"
             >
               <Imagem
@@ -83,7 +83,7 @@ function ExploreFoodsNationalities() {
               <p data-testid={ `${index}-card-name` }>{ strMeal }</p>
             </IngredientsCard>
           ))}
-        </div>
+        </FlexWrapContainer>
         <Footer />
       </div>
     )

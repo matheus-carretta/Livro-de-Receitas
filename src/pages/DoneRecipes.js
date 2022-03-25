@@ -8,24 +8,6 @@ import '../styles/DoneRecipes.css';
 const copy = require('clipboard-copy');
 
 function DoneRecipes() {
-  // mock
-  const mockDoneRecipes = [
-    {
-      id: '52854',
-      type: 'food',
-      nationality: 'American',
-      category: 'Dessert',
-      alcoholicOrNot: '',
-      name: 'Spicy Arrabiata Penne',
-      image: 'https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg',
-      doneDate: '20/03/2022',
-      tags: ['Breakfast', 'Desert'],
-    },
-  ];
-
-  // gravar o mock no localStorage
-  localStorage.setItem('doneRecipes', JSON.stringify(mockDoneRecipes));
-
   const [doneRecipes, setDoneRecipes] = useState([]);
   const [copied, setCopied] = useState(false);
   const [filterRecipe, setFilterRecipe] = useState([]);
@@ -41,6 +23,9 @@ function DoneRecipes() {
 
   const getDoneRecipesLocalStorage = () => {
     const arrayDoneRecipes = localStorage.getItem('doneRecipes');
+    if (arrayDoneRecipes === null) {
+      return [];
+    }
     setDoneRecipes(JSON.parse(arrayDoneRecipes));
     setFilterRecipe(JSON.parse(arrayDoneRecipes));
   };
@@ -139,7 +124,7 @@ function DoneRecipes() {
               </h3>
 
               <div className="tags-container">
-                {tags.map((tag, indexTag) => (
+                {tags ? tags.map((tag, indexTag) => (
                   <h2
                     data-testid={ `${index}-${tag}-horizontal-tag` }
                     key={ indexTag }
@@ -147,7 +132,7 @@ function DoneRecipes() {
                   >
                     {tag}
                   </h2>
-                ))}
+                )) : ''}
               </div>
 
             </div>

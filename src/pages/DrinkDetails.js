@@ -4,12 +4,15 @@ import { useHistory } from 'react-router-dom';
 import { getRecipeDetailsThunk, getRecommendationThunk } from '../store/actions';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, renderIngredients, renderRecommendations,
   checkFavorite, checkInProgress } from '../services/recipeDetailsAndProgressFunctions';
 import '../styles/RecipeDetails.css';
 import Loading from '../components/Loading';
+import { ImageContainer, ImgHeader, Body, TitleContainer, HeaderTitle, TitleContainerSt,
+  HeaderSubTitle, Section, Instruction, StartButton,
+} from '../styles/RecipeDetails';
+import { Icon } from '../styles/Header';
 
 const copy = require('clipboard-copy');
 
@@ -24,7 +27,7 @@ function DrinkDetails() {
 
   const id = pathname.replace('/drinks/', '');
 
-  const [loading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [inProgress, setInProgress] = useState(false);
@@ -63,73 +66,76 @@ function DrinkDetails() {
 
   const { strDrinkThumb, strDrink, strAlcoholic, strInstructions } = drinkDetails;
 
+  if (drinkDetails.idDrink && loading) setLoading(false);
+
   return (
     loading ? <Loading />
       : (
         <main>
-          <div className="img-container">
-            <img src={ strDrinkThumb } alt="drink tumb" data-testid="recipe-photo" />
-          </div>
+          <ImageContainer>
+            <ImgHeader
+              src={ strDrinkThumb }
+              alt="drink tumb"
+              data-testid="recipe-photo"
+            />
+          </ImageContainer>
 
-          <div className="page-body">
-            <div className="title-container">
-              <h2 data-testid="recipe-title">{strDrink}</h2>
-              <button
-                type="button"
+          <TitleContainer>
+            <TitleContainerSt>
+              <HeaderTitle>{strDrink}</HeaderTitle>
+              <Icon
                 data-testid="share-btn"
                 onClick={ handleShare }
-              >
-                <img src={ shareIcon } alt="share button" />
-              </button>
-              <button
+                src={ shareIcon }
+                alt="share button"
+                size="28px"
+                margin="4px"
+              />
+              <Icon
                 type="button"
+                size="35px"
                 onClick={
                   isFavorite
                     ? () => unsetFavorite()
                     : () => setFavorite()
                 }
-              >
-                <img
-                  src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-                  alt="favorite button"
-                  data-testid="favorite-btn"
-                />
-              </button>
-            </div>
+                src={ isFavorite ? pinkHeartIcon : whiteHeartIcon }
+                alt="favorite button"
+                data-testid="favorite-btn"
+                margin="4px"
+              />
+            </TitleContainerSt>
+            <HeaderSubTitle data-testid="recipe-category">{strAlcoholic}</HeaderSubTitle>
+          </TitleContainer>
 
-            <span className="category" data-testid="recipe-category">{strAlcoholic}</span>
-
-            <section>
-              <span>Ingredients</span>
+          <Body>
+            <Section>
+              <h3>Ingredients</h3>
               { renderIngredients(drinkDetails) }
-            </section>
+            </Section>
 
-            <section>
-              <span>Instructions</span>
-              <p
-                className="text-container"
-                data-testid="instructions"
-              >
+            <Section>
+              <h3>Instructions</h3>
+              <Instruction data-testid="instructions">
                 {strInstructions}
-              </p>
-            </section>
+              </Instruction>
+            </Section>
 
-            <section>
-              <span>Recommended</span>
+            <Section>
+              <h3>Recommended</h3>
               { renderRecommendations(meals, 'meal') }
-            </section>
+            </Section>
 
             {copied && <p className="copiedPopUp">Link copied!</p>}
+          </Body>
 
-            <button
-              className="startRecipeBtn"
-              type="button"
-              data-testid="start-recipe-btn"
-              onClick={ () => history.push(`/drinks/${id}/in-progress`, { from: id }) }
-            >
-              { inProgress ? 'Continue Recipe' : 'Start Recipe' }
-            </button>
-          </div>
+          <StartButton
+            type="button"
+            data-testid="start-recipe-btn"
+            onClick={ () => history.push(`/drinks/${id}/in-progress`, { from: id }) }
+          >
+            { inProgress ? 'Continue Recipe' : 'Start Recipe' }
+          </StartButton>
         </main>
       ));
 }

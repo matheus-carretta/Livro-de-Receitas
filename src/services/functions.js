@@ -40,3 +40,9 @@ export const removeFavorite = (id) => {
   const favorites = getFavorites.filter((favorite) => favorite.id !== id);
   localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
 };
+
+export const getTodayDate = () => {
+  const date = new Date();
+  const formatedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  return formatedDate;
+};
