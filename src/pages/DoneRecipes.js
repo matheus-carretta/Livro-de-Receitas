@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
-import shareIcon from '../images/shareIcon.svg';
+import shareIcon from '../images/share.png';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import '../styles/DoneRecipes.css';
+import { CenterContainer, ButtonContainer, FilterButton, Main, CardInfos,
+  RecipeCard, RecipeImgContainer, CardTopInfos } from '../styles/DoneRecipes';
 
 const copy = require('clipboard-copy');
 
@@ -45,43 +47,39 @@ function DoneRecipes() {
   };
 
   return (
-    <main className="main-content">
+    <Main>
       <Header title="Done Recipes" isSearch={ false } />
-      <div className="button-container">
-        <button
-          type="button"
-          data-testid="filter-by-all-btn"
-          onClick={ getDoneRecipesLocalStorage }
-          className="filter-btn"
-        >
-          All
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-food-btn"
-          onClick={ () => filterBy('food') }
-          className="filter-btn"
-        >
-          Food
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-drink-btn"
-          onClick={ () => filterBy('drink') }
-          className="filter-btn"
-        >
-          Drinks
-        </button>
-      </div>
+      <CenterContainer>
+        <ButtonContainer>
+          <FilterButton
+            type="button"
+            data-testid="filter-by-all-btn"
+            onClick={ getDoneRecipesLocalStorage }
+          >
+            All
+          </FilterButton>
+          <FilterButton
+            type="button"
+            data-testid="filter-by-food-btn"
+            onClick={ () => filterBy('food') }
+          >
+            Food
+          </FilterButton>
+          <FilterButton
+            type="button"
+            data-testid="filter-by-drink-btn"
+            onClick={ () => filterBy('drink') }
+          >
+            Drinks
+          </FilterButton>
+        </ButtonContainer>
 
-      <div className="cards-container">
         {filterRecipe.map((
-          { name, image, category, doneDate, tags, nationality, alcoholicOrNot, type, id,
-          }, index,
+          { name, image, category, doneDate,
+            nationality, alcoholicOrNot, type, id }, index,
         ) => (
-          <div className="recipe-card" key={ index }>
-
-            <div className="recipe-img-container">
+          <RecipeCard key={ index }>
+            <RecipeImgContainer>
               <img
                 src={ image }
                 alt={ `${name} imagem` }
@@ -89,11 +87,12 @@ function DoneRecipes() {
                 onClick={ () => history.push(`/${type}s/${id}`) }
                 aria-hidden="true"
               />
-            </div>
-
-            <div className="card-infos">
-              <div className="card-top-options">
-                <h3 data-testid={ `${index}-horizontal-top-text` } className="text-info">
+            </RecipeImgContainer>
+            <CardInfos>
+              <CardTopInfos>
+                <h3
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
                   { nationality ? `${nationality} - ${category}` : `${alcoholicOrNot}` }
                 </h3>
 
@@ -105,10 +104,10 @@ function DoneRecipes() {
                     src={ shareIcon }
                     alt="share button"
                     data-testid={ `${index}-horizontal-share-btn` }
-                    width="20"
+                    width="22"
                   />
                 </button>
-              </div>
+              </CardTopInfos>
 
               <h2
                 className="food-drink-name"
@@ -119,35 +118,19 @@ function DoneRecipes() {
                 { name }
               </h2>
 
-              <h3 data-testid={ `${index}-horizontal-done-date` } className="doneInText">
+              <h3
+                data-testid={ `${index}-horizontal-done-date` }
+              >
                 { `Done in: ${doneDate}` }
               </h3>
-
-              <div className="tags-container">
-                {tags ? tags.map((tag, indexTag) => (
-                  <h2
-                    data-testid={ `${index}-${tag}-horizontal-tag` }
-                    key={ indexTag }
-                    className="tag"
-                  >
-                    {tag}
-                  </h2>
-                )) : ''}
-              </div>
-
-            </div>
-
-          </div>
-
+            </CardInfos>
+          </RecipeCard>
         ))}
+        <div />
 
-      </div>
-
-      <div />
-
-      {copied && <p className="copiedPopUp">Link copied!</p>}
-
-    </main>
+        {copied && <p className="copiedPopUp">Link copied!</p>}
+      </CenterContainer>
+    </Main>
   );
 }
 

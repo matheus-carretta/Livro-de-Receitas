@@ -7,7 +7,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import FontStyles from './services/fonts/fontStyles';
 import { GlobalStyle } from './styles/GlobalStyle';
-// import './index.css';
 
 ReactDOM.render(
   <BrowserRouter>

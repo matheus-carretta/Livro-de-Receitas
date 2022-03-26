@@ -90,7 +90,6 @@ function DrinkInProgress() {
     }
     const newDoneRecipes = JSON.stringify([...doneRecipes, newRecipe]);
     localStorage.setItem('doneRecipes', newDoneRecipes);
-    console.log(drinkDetails);
     history.push('/done-recipes');
   };
 

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getRecipeDetailsThunk, getRecommendationThunk } from '../store/actions';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import shareIcon from '../images/share.png';
+import whiteHeartIcon from '../images/whiteHeart.png';
+import pinkHeartIcon from '../images/pinkHeart.png';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, renderIngredients, renderRecommendations,
   checkFavorite, checkInProgress } from '../services/recipeDetailsAndProgressFunctions';
