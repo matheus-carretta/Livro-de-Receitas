@@ -11,7 +11,7 @@ import { addFavorite, removeFavorite, renderIngredients, renderRecommendations,
 import '../styles/RecipeDetails.css';
 import Loading from '../components/Loading';
 import { ImageContainer, ImgHeader, Body, TitleContainer, HeaderTitle, TitleContainerSt,
-  HeaderSubTitle, Section, Instruction, StartButton,
+  HeaderSubTitle, Section, Instruction, StartButton, IconContainer,
 } from '../styles/RecipeDetails';
 import { Icon } from '../styles/Header';
 
@@ -84,6 +84,14 @@ function DrinkDetails() {
           <TitleContainer>
             <TitleContainerSt>
               <HeaderTitle>{strDrink}</HeaderTitle>
+              <HeaderSubTitle
+                data-testid="recipe-category"
+              >
+                {strAlcoholic}
+              </HeaderSubTitle>
+            </TitleContainerSt>
+
+            <IconContainer>
               <Icon
                 data-testid="share-btn"
                 onClick={ handleShare }
@@ -105,8 +113,7 @@ function DrinkDetails() {
                 data-testid="favorite-btn"
                 margin="4px"
               />
-            </TitleContainerSt>
-            <HeaderSubTitle data-testid="recipe-category">{strAlcoholic}</HeaderSubTitle>
+            </IconContainer>
           </TitleContainer>
 
           <Body>

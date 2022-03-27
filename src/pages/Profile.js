@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css';
+import { FilterButton } from '../styles/DoneRecipes';
+import { ProfileContainer, EmailSpan } from '../styles/Profile';
 
 function Profile() {
   const [userEmail, setUserEmail] = useState('teste@teste.com');
@@ -17,46 +19,43 @@ function Profile() {
   }, []);
 
   return (
-    <div>
+    <>
       <Header title="Profile" isSearch={ false } />
 
-      <div className="container">
-        <span data-testid="profile-email" className="emailProfile">
+      <ProfileContainer>
+        <EmailSpan data-testid="profile-email">
           { userEmail }
-        </span>
+        </EmailSpan>
 
-        <button
+        <FilterButton
           data-testid="profile-done-btn"
           type="button"
-          className="btnsProfile"
           onClick={ () => history.push('/done-recipes') }
         >
           Done Recipes
-        </button>
+        </FilterButton>
 
-        <button
+        <FilterButton
           data-testid="profile-favorite-btn"
           type="button"
-          className="btnsProfile"
           onClick={ () => history.push('/favorite-recipes') }
         >
           Favorite Recipes
-        </button>
+        </FilterButton>
 
-        <button
+        <FilterButton
           data-testid="profile-logout-btn"
           type="button"
-          className="btnsProfile"
           onClick={ () => {
             history.push('/');
             localStorage.clear();
           } }
         >
           Logout
-        </button>
-      </div>
+        </FilterButton>
+      </ProfileContainer>
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -10,7 +10,7 @@ import { addFavorite, removeFavorite, renderIngredientsInProgress, checkFavorite
   checkProgress, validateFinishBtn } from '../services/recipeDetailsAndProgressFunctions';
 import { getRecipeDetailsThunk } from '../store/actions';
 import { Body, HeaderSubTitle, HeaderTitle, ImageContainer, ImgHeader, Instruction,
-  Section, TitleContainer, TitleContainerSt, Copied, StartButton,
+  Section, TitleContainer, TitleContainerSt, Copied, StartButton, IconContainer,
 } from '../styles/RecipeDetails';
 import { Icon } from '../styles/Header';
 import { getTodayDate } from '../services/functions';
@@ -72,7 +72,7 @@ function FoodInProgress() {
   const handleClick = () => setRecipeFinished(validateFinishBtn());
 
   const { strMealThumb, strMeal, strCategory,
-    strInstructions, idMeal, strArea, strTags } = foodDetails;
+    strInstructions, idMeal, strArea } = foodDetails;
 
   const finishRecipe = async () => {
     const todayDate = getTodayDate();
@@ -85,7 +85,6 @@ function FoodInProgress() {
       name: strMeal,
       image: strMealThumb,
       doneDate: todayDate,
-      tags: strTags && (strTags.split(',')),
     };
 
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
@@ -110,6 +109,10 @@ function FoodInProgress() {
           <TitleContainer>
             <TitleContainerSt>
               <HeaderTitle data-testid="recipe-title">{strMeal}</HeaderTitle>
+              <HeaderSubTitle data-testid="recipe-category">{strCategory}</HeaderSubTitle>
+            </TitleContainerSt>
+
+            <IconContainer>
               <Icon
                 data-testid="share-btn"
                 onClick={ handleShare }
@@ -130,8 +133,8 @@ function FoodInProgress() {
                 size="35px"
                 margin="4px"
               />
-            </TitleContainerSt>
-            <HeaderSubTitle data-testid="recipe-category">{strCategory}</HeaderSubTitle>
+
+            </IconContainer>
           </TitleContainer>
 
           <Body>

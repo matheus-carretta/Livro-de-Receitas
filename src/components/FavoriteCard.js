@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
-import shareIcon from '../images/shareIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/share.png';
+import pinkHeartIcon from '../images/pinkHeart.png';
 import '../styles/FavoriteCard.css';
+import { RecipeCard, RecipeImgContainer, CardInfos,
+  CardTopInfos } from '../styles/DoneRecipes';
+import { Icon } from '../styles/Header';
 
 const FavoriteCard = ({ index, recipe, removeFavorite }) => {
   const [copied, setLinkCopied] = useState(false);
@@ -18,48 +20,54 @@ const FavoriteCard = ({ index, recipe, removeFavorite }) => {
   };
 
   return (
-    <div className="sub-container-card">
-      <Link key={ index } to={ `/${recipe.type}s/${recipe.id}` }>
+    <RecipeCard key={ index }>
+      <RecipeImgContainer>
         <img
           alt={ name }
           data-testid={ `${index}-horizontal-image` }
           src={ image }
           className="imageCard"
         />
+      </RecipeImgContainer>
+      <CardInfos>
+        <CardTopInfos>
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            { `${nationality} - ${category}` }
+          </p>
 
-        <p data-testid={ `${index}-horizontal-top-text` }>
-          { `${nationality} - ${category}` }
-        </p>
+          <button
+            type="button"
+            onClick={ copyToClipboard }
+          >
+            <Icon
+              size="25px"
+              data-testid={ `${index}-horizontal-share-btn` }
+              src={ shareIcon }
+              alt="Share icon"
+            />
+          </button>
+
+          <button
+            type="button"
+            onClick={ removeFavorite }
+          >
+            <Icon
+              size="30px"
+              data-testid={ `${index}-horizontal-favorite-btn` }
+              src={ pinkHeartIcon }
+              alt="favorite icon"
+            />
+          </button>
+        </CardTopInfos>
 
         <h2 data-testid={ `${index}-horizontal-name` }>
           { name }
         </h2>
-      </Link>
 
-      <button
-        type="button"
-        onClick={ copyToClipboard }
-      >
-        <img
-          data-testid={ `${index}-horizontal-share-btn` }
-          src={ shareIcon }
-          alt="Share icon"
-        />
-      </button>
+        {copied && <p className="copiedPopUp">Link copied!</p>}
 
-      {copied && <p className="copiedPopUp">Link copied!</p>}
-
-      <button
-        type="button"
-        onClick={ removeFavorite }
-      >
-        <img
-          data-testid={ `${index}-horizontal-favorite-btn` }
-          src={ blackHeartIcon }
-          alt="favorite icon"
-        />
-      </button>
-    </div>
+      </CardInfos>
+    </RecipeCard>
   );
 };
 

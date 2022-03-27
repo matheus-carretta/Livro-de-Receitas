@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import FavoriteCard from '../components/FavoriteCard';
 import Header from '../components/Header';
 import { removeFavorite } from '../services/functions';
+import { CenterContainer, ButtonContainer, FilterButton,
+  Main } from '../styles/DoneRecipes';
 
 function Favorites() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
@@ -28,49 +30,46 @@ function Favorites() {
   };
 
   return (
-    <>
+    <Main>
       <Header title="Favorite Recipes" isSearch={ false } />
-      <div>
-        <form className="favorite-buttons-container">
-          <button
+      <CenterContainer>
+        <ButtonContainer>
+
+          <FilterButton
             type="button"
             data-testid="filter-by-all-btn"
             onClick={ () => setFilter('all') }
-            className="favorite-buttons"
           >
             All
-          </button>
+          </FilterButton>
 
-          <button
+          <FilterButton
             type="button"
             data-testid="filter-by-food-btn"
             onClick={ () => setFilter('food') }
-            className="favorite-buttons"
           >
             Food
-          </button>
+          </FilterButton>
 
-          <button
+          <FilterButton
             type="button"
             data-testid="filter-by-drink-btn"
             onClick={ () => setFilter('drink') }
-            className="favorite-buttons"
           >
             Drinks
-          </button>
-        </form>
-        <div className="favorite-container">
-          {favoriteRecipes.map((data, index) => (
-            <FavoriteCard
-              key={ index }
-              index={ index }
-              recipe={ data }
-              removeFavorite={ () => removeRecipeFavorite(data.id) }
-            />
-          )) }
-        </div>
-      </div>
-    </>
+          </FilterButton>
+        </ButtonContainer>
+
+        {favoriteRecipes.map((data, index) => (
+          <FavoriteCard
+            key={ index }
+            index={ index }
+            recipe={ data }
+            removeFavorite={ () => removeRecipeFavorite(data.id) }
+          />
+        )) }
+      </CenterContainer>
+    </Main>
   );
 }
 

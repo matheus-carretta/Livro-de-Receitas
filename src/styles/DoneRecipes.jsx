@@ -52,7 +52,6 @@ export const CardInfos = styled.div`
   flex-direction: column;
   justify-content: space-around;
   margin: 0 3px;
-  overflow: hidden;
   width: 50%;
   &  > h2 {
   color: ${WHITE};

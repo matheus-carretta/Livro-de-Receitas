@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { HeaderContainer } from './Header';
 import { LIGHT_BLACK, WHITE, PINK, ORANGE } from './Colors';
 
 export const ImageContainer = styled.div`
@@ -17,35 +16,44 @@ export const Body = styled.div`
   padding: 2.5%;
 `;
 
-export const TitleContainer = styled(HeaderContainer)`
-  box-sizing: content-box;
-  position: relative;
+export const TitleContainer = styled.div`
   align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  height: 2em;
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
-  width: 100%;
+  background-color: ${ORANGE};
+  border-bottom: solid ${LIGHT_BLACK} 0.1em;
   border-top: solid ${LIGHT_BLACK} 0.1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-height: 4em;
+  padding: 0.4em 0em;
+  width: 100%;
 `;
 
 export const TitleContainerSt = styled.div`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  max-height: 2em;
+  padding-bottom: 0.5em;
+  width: 100%;
+`;
+
+export const IconContainer = styled.div`
   align-items: center;
   display: flex;
-  height: 2em;
-  width: 100%;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 export const HeaderTitle = styled.h2`
   padding-left: 4px;
-  flex-grow: 1;
-  max-width: calc(100vw - 79px);
+  font-size: 0.9em;
 `;
 
 export const HeaderSubTitle = styled.h5`
   padding-left: 8px;
   color: ${WHITE};
+  font-size: 0.6em;
   text-shadow: ${LIGHT_BLACK} 0.05em 0.05em 0.05em;
 `;
 
@@ -182,8 +190,4 @@ export const Copied = styled.p`
   color: ${WHITE};
   text-shadow: ${LIGHT_BLACK} 0.05em 0.05em 0.05em;
   border: solid ${LIGHT_BLACK} 0.07em;
-`;
-
-export const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
-  background-color: red;
 `;

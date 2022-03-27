@@ -1,7 +1,7 @@
 import React from 'react';
 import { ZERO, MAX_RECOMENDATIONS, MIN_INGREDIENTS, MAX_INGREDIENTS } from './constants';
 import { TextContainer, Item, Carousel, RecommendationCard, RecommendationImg,
-  ItemInProgress, RecommendationCategory, RecommendationName, HiddenCheckbox,
+  ItemInProgress, RecommendationCategory, RecommendationName,
 } from '../styles/RecipeDetails';
 
 export const URL = (strYoutube = '') => strYoutube.replace('watch?v=', 'v/');
@@ -164,7 +164,7 @@ export const renderIngredientsInProgress = (recipeDetails, type, routeId) => {
           data-testid={ `${index}-ingredient-step` }
           htmlFor={ `ingredient-${index}` }
         >
-          <HiddenCheckbox
+          <input
             type="checkbox"
             id={ `checkbox-${index}` }
             onClick={ () => handleCheckBox(`checkbox-${index}`, type, routeId) }

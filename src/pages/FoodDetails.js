@@ -11,7 +11,7 @@ import { addFavorite, removeFavorite, URL, renderIngredients, renderRecommendati
 import Loading from '../components/Loading';
 import { ImageContainer, ImgHeader, Body, TitleContainer, HeaderTitle, TitleContainerSt,
   HeaderSubTitle, Section, Instruction, StartButton, Copied, Video,
-} from '../styles/RecipeDetails';
+  IconContainer } from '../styles/RecipeDetails';
 import { Icon } from '../styles/Header';
 
 const copy = require('clipboard-copy');
@@ -85,6 +85,10 @@ function FoodDetails() {
           <TitleContainer>
             <TitleContainerSt>
               <HeaderTitle data-testid="recipe-title">{strMeal}</HeaderTitle>
+              <HeaderSubTitle data-testid="recipe-category">{strCategory}</HeaderSubTitle>
+            </TitleContainerSt>
+
+            <IconContainer>
               <Icon
                 data-testid="share-btn"
                 onClick={ handleShare }
@@ -106,8 +110,7 @@ function FoodDetails() {
                 data-testid="favorite-btn"
                 margin="4px"
               />
-            </TitleContainerSt>
-            <HeaderSubTitle data-testid="recipe-category">{strCategory}</HeaderSubTitle>
+            </IconContainer>
           </TitleContainer>
 
           <Body>
