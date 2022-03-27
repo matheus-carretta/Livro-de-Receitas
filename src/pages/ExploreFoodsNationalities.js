@@ -7,8 +7,7 @@ import Footer from '../components/Footer';
 import { fetchFoodsByNationality,
   fetchNationalities } from '../services/foodsCategoriesAPI';
 import { NUMBER_12 } from '../services/constants';
-import '../styles/ExploreFoodsNationalities.css';
-import { IngredientsCard,
+import { RecipeCard,
   Imagem, FlexWrapContainer, Dropdown } from '../styles/ExplorePages';
 
 function ExploreFoodsNationalities() {
@@ -69,7 +68,7 @@ function ExploreFoodsNationalities() {
         </Dropdown>
         <FlexWrapContainer>
           {foodArray.map(({ idMeal, strMeal, strMealThumb }, index) => (
-            <IngredientsCard
+            <RecipeCard
               key={ index }
               data-testid={ `${index}-recipe-card` }
               onClick={ () => redirectToFoodDetails(idMeal) }
@@ -81,7 +80,7 @@ function ExploreFoodsNationalities() {
                 data-testid={ `${index}-card-img` }
               />
               <p data-testid={ `${index}-card-name` }>{ strMeal }</p>
-            </IngredientsCard>
+            </RecipeCard>
           ))}
         </FlexWrapContainer>
         <Footer />

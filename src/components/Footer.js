@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Wine from '../images/wine-glass.png';
-import Soup from '../images/soup.png';
+import Salad from '../images/salada.png';
 import Cardapio from '../images/cardapio.png';
 import { FooterContainer } from '../styles/Footer';
 
@@ -28,7 +28,7 @@ function Footer() {
       </Link>
       <Link to="/foods">
         <img
-          src={ Soup }
+          src={ Salad }
           width="40px"
           height="40px"
           alt="mealIcon"

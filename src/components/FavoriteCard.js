@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
 import shareIcon from '../images/share.png';
 import pinkHeartIcon from '../images/pinkHeart.png';
-import '../styles/FavoriteCard.css';
 import { RecipeCard, RecipeImgContainer, CardInfos,
   CardTopInfos } from '../styles/DoneRecipes';
 import { Icon } from '../styles/Header';

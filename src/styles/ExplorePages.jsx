@@ -30,7 +30,7 @@ export const ButtonLink = styled(Link)`
   text-decoration: none;
 `;
 
-export const IngredientsCard = styled.div`
+export const RecipeCard = styled.div`
   border-radius: 6px;
   box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -43,11 +43,13 @@ export const IngredientsCard = styled.div`
   background-color: ${PINK};
   width: 42%;
   text-align: center;
+  text-shadow: ${LIGHT_BLACK} 0.05em 0.05em 0.05em;
 `;
 
 export const Imagem = styled.img`
   width: 80px;
   height: 80px;
+  margin-bottom: 10px;
   border-radius: 50%;
 `;
 

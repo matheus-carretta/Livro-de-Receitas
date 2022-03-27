@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/share.png';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
-import '../styles/DoneRecipes.css';
 import { CenterContainer, ButtonContainer, FilterButton, Main, CardInfos,
   RecipeCard, RecipeImgContainer, CardTopInfos } from '../styles/DoneRecipes';
 

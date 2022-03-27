@@ -4,9 +4,8 @@ import Header from '../components/Header';
 import { fetchIngredients } from '../services/foodsCategoriesAPI';
 import Footer from '../components/Footer';
 import { NUMBER_12, ZERO } from '../services/constants';
-import '../styles/ExploreFoodsIngredients.css';
 import Loading from '../components/Loading';
-import { IngredientsCard, FlexWrapContainer } from '../styles/ExplorePages';
+import { RecipeCard, FlexWrapContainer } from '../styles/ExplorePages';
 
 function ExploreFoodsIngredients() {
   const [ingredients, setIngredients] = useState([]);
@@ -31,7 +30,7 @@ function ExploreFoodsIngredients() {
         <FlexWrapContainer>
           {ingredients.map(
             ({ strIngredient }, index) => (
-              <IngredientsCard
+              <RecipeCard
                 key={ index }
                 data-testid={ `${index}-ingredient-card` }
                 onClick={ () => history.push('/foods') }
@@ -43,7 +42,7 @@ function ExploreFoodsIngredients() {
                   data-testid={ `${index}-card-img` }
                 />
                 <p data-testid={ `${index}-card-name` }>{ strIngredient }</p>
-              </IngredientsCard>
+              </RecipeCard>
             ),
           )}
         </FlexWrapContainer>

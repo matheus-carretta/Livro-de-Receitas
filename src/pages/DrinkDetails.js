@@ -8,7 +8,6 @@ import pinkHeartIcon from '../images/pinkHeart.png';
 import { COPIED_MESSAGE_TIME } from '../services/constants';
 import { addFavorite, removeFavorite, renderIngredients, renderRecommendations,
   checkFavorite, checkInProgress } from '../services/recipeDetailsAndProgressFunctions';
-import '../styles/RecipeDetails.css';
 import Loading from '../components/Loading';
 import { ImageContainer, ImgHeader, Body, TitleContainer, HeaderTitle, TitleContainerSt,
   HeaderSubTitle, Section, Instruction, StartButton, IconContainer,
