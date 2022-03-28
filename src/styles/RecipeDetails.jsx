@@ -60,7 +60,6 @@ export const HeaderSubTitle = styled.h5`
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 0;
   padding-top: 1em;
 `;
 
@@ -164,7 +163,6 @@ export const RecommendationName = styled.span`
 export const StartButton = styled.button`
   background-color: ${ORANGE};
   border: none;
-  bottom: 0;
   font-size: 1.2em;
   font-family: "Spill Beans";
   font-weight: 900;
@@ -172,7 +170,6 @@ export const StartButton = styled.button`
   text-shadow: ${LIGHT_BLACK} 0.05em 0.05em 0.05em;
   height: 1.9em;
   margin-top: 1em;
-  position: fixed;
   width: 100%;
   border-top: solid ${LIGHT_BLACK} 0.1em;
 `;

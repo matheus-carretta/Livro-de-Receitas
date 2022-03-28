@@ -6,9 +6,8 @@ export const FlexColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 100px);
-  width: 100vw;
-  margin-bottom: 50px;
-  justify-content: space-evenly;
+  width: 100%;
+  justify-content: space-around;
   align-items: center;
 `;
 
@@ -56,7 +55,6 @@ export const Imagem = styled.img`
 export const FlexWrapContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 55px;
 `;
 
 export const Dropdown = styled.select`

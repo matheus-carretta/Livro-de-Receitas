@@ -42,8 +42,8 @@ function Drinks() {
               <p>{ strDrink }</p>
             </RecipeCard>
           ))}
+          <Footer />
         </FlexWrapContainer>
-        <Footer />
       </main>
     )
   );
