@@ -56,7 +56,7 @@ export const Imagem = styled.img`
 export const FlexWrapContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  padding-bottom: 55px;
 `;
 
 export const Dropdown = styled.select`

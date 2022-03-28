@@ -2,3 +2,8 @@
   margin: 0;
   border: 0;
 }
+
+body {
+  max-width: 360px;
+  max-height: 640px;
+}

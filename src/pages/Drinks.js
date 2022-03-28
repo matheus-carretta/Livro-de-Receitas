@@ -27,8 +27,8 @@ function Drinks() {
   return (
     isLoading ? <Loading /> : (
       <main>
+        <Header title="Drinks" isSearch type="drink" />
         <FlexWrapContainer>
-          <Header title="Drinks" isSearch type="drink" />
           {cocktail.map(({ strDrink, strDrinkThumb, idDrink }, index) => (
             <RecipeCard
               key={ index }
@@ -42,8 +42,8 @@ function Drinks() {
               <p>{ strDrink }</p>
             </RecipeCard>
           ))}
-          <Footer position="fixed" />
         </FlexWrapContainer>
+        <Footer />
       </main>
     )
   );

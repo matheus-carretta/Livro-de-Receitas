@@ -83,9 +83,10 @@ function DrinkInProgress() {
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     if (doneRecipes === null) {
       localStorage.setItem('doneRecipes', JSON.stringify([newRecipe]));
+    } else {
+      const newDoneRecipes = JSON.stringify([...doneRecipes, newRecipe]);
+      localStorage.setItem('doneRecipes', newDoneRecipes);
     }
-    const newDoneRecipes = JSON.stringify([...doneRecipes, newRecipe]);
-    localStorage.setItem('doneRecipes', newDoneRecipes);
     history.push('/done-recipes');
   };
 
